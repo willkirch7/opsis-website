@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opsis AI — Your screen, understood.</title>
+  <meta name="description" content="Ask questions about anything on your screen. Powered by Claude AI. Always-on-top overlay for Windows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="nav-logo">
+        <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
+          <path d="M24 4L4 14l20 10 20-10L24 4zM4 34l20 10 20-10M4 24l20 10 20-10" stroke="url(#ng)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs><linearGradient id="ng" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+        </svg>
+        <span>Opsis AI</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a href="downloads/OpsisAI.exe" class="btn btn-outline" download>Download Free</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="grid-lines"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Powered by Claude AI
+      </div>
+      <h1>Your screen,<br /><span class="grad-text">understood.</span></h1>
+      <p class="hero-sub">
+        A floating AI overlay that sees your screen and answers any question — instantly.
+        Ask about code, documents, UI bugs, or anything else you're looking at.
+      </p>
+      <div class="hero-cta">
+        <a href="downloads/OpsisAI.exe" class="btn btn-primary" download>
+          Download for Windows
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="#features" class="btn btn-ghost">See how it works</a>
+      </div>
+      <p class="hero-note">Free trial included · 10 free queries on sign-up</p>
+    </div>
+
+    <!-- App mockup -->
+    <div class="container mockup-wrap">
+      <div class="mockup-frame">
+        <div class="mockup-titlebar">
+          <div class="mockup-logo">
+            <svg width="16" height="16" viewBox="0 0 48 48" fill="none"><path d="M24 4L4 14l20 10 20-10L24 4zM4 34l20 10 20-10M4 24l20 10 20-10" stroke="url(#mmg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="mmg" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs></svg>
+            <span>Opsis AI</span>
+          </div>
+          <div class="mockup-status"><span class="dot-green"></span> Ready</div>
+          <div class="mockup-controls"><span></span><span></span><span></span></div>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-msg ai">
+            <div class="mockup-avatar"></div>
+            <div class="mockup-bubble">I can see a React component with a prop drilling issue on line 42. The <code>userData</code> prop is passed through 3 layers — consider using Context or Zustand for this.</div>
+          </div>
+          <div class="mockup-msg user">
+            <div class="mockup-bubble user">How do I fix it quickly?</div>
+          </div>
+          <div class="mockup-msg ai typing">
+            <div class="mockup-avatar"></div>
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="mockup-input">
+          <div class="mockup-textarea">Ask anything about your screen…</div>
+          <div class="mockup-send"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything you need to<br /><span class="grad-text">understand your screen</span></h2>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <h3>Ask Anything</h3>
+          <p>Ask natural language questions about anything visible on your screen. No screenshots needed — just ask.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Watch Mode</h3>
+          <p>Enable continuous monitoring and Opsis will scan your screen every few seconds, flagging changes automatically.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Instant Answers</h3>
+          <p>Claude's vision model analyzes your screen in seconds. Get detailed, contextual answers without copy-pasting.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <h3>Always on Top</h3>
+          <p>The overlay floats above all your other windows, so you can keep it open while you work without switching context.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Private by Design</h3>
+          <p>Screenshots are sent directly to Anthropic's API and never stored. Your screen content stays your own.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          </div>
+          <h3>Works Everywhere</h3>
+          <p>Any application, any context — code editors, browsers, documents, spreadsheets, or design tools. If it's on screen, Opsis can read it.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple,<br /><span class="grad-text">transparent pricing</span></h2>
+      <p class="section-sub">Start free. Upgrade when you're ready — cancel anytime.</p>
+
+      <div class="pricing-grid three-col">
+
+        <div class="pricing-card">
+          <div class="plan-name">Free</div>
+          <div class="plan-price"><span class="price-amt">$0</span><span class="price-unit">forever</span></div>
+          <div class="plan-credits">10 screen analyses</div>
+          <ul class="plan-features">
+            <li>Full feature access</li>
+            <li>On-demand + Watch mode</li>
+            <li>Just sign up and start</li>
+          </ul>
+          <a href="downloads/OpsisAI.exe" class="btn btn-outline w-full" download>Download Free</a>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <div class="plan-name">Pro Monthly</div>
+          <div class="plan-price"><span class="price-amt">$20</span><span class="price-unit">/ month</span></div>
+          <div class="plan-credits">1,000 analyses / month</div>
+          <ul class="plan-features">
+            <li>1,000 screen analyses / month</li>
+            <li>On-demand + Watch mode</li>
+            <li>Priority support</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="#" class="btn btn-primary w-full" onclick="checkout('pro_monthly'); return false;">Get Pro Monthly</a>
+        </div>
+
+        <div class="pricing-card yearly">
+          <div class="popular-badge save">Save 25%</div>
+          <div class="plan-name">Pro Yearly</div>
+          <div class="plan-price"><span class="price-amt">$180</span><span class="price-unit">/ year</span></div>
+          <div class="plan-credits">1,000 analyses / month · <em>$15/mo</em></div>
+          <ul class="plan-features">
+            <li>1,000 screen analyses / month</li>
+            <li>On-demand + Watch mode</li>
+            <li>Priority support</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="#" class="btn btn-outline w-full" onclick="checkout('pro_yearly'); return false;">Get Pro Yearly</a>
+        </div>
+
+      </div>
+
+      <p class="pricing-note">
+        1 credit = 1 screen analysis. Watch mode uses 1 credit per interval tick.
+        Credits reset each billing cycle and don't roll over.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container faq-inner">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Questions</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>Is my screen content private?</summary>
+          <p>Yes. Screenshots are sent directly to Anthropic's API over TLS and are never stored or logged by Opsis. Anthropic's API usage policies apply.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the credit system work?</summary>
+          <p>Each screen analysis uses 1 credit. Free accounts start with 10 credits. Pro plans get 1,000 credits per month that reset each billing cycle.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What Windows versions are supported?</summary>
+          <p>Windows 10 (version 1903+) and Windows 11. The app requires the WebView2 runtime — it's pre-installed on Windows 11 and available as a free download for Windows 10.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do unused credits expire?</summary>
+          <p>Credit pack credits never expire. Monthly plan credits reset at the start of each billing cycle and do not roll over.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What AI model does Opsis use?</summary>
+          <p>Opsis uses Claude Sonnet (claude-sonnet-4-6) by Anthropic — a state-of-the-art multimodal model with strong vision capabilities.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <div class="orb orb-cta"></div>
+      <h2>Ready to see what's on your screen?</h2>
+      <p>Download Opsis AI and get 10 free queries when you sign up.</p>
+      <a href="downloads/OpsisAI.exe" class="btn btn-primary btn-lg" download>
+        Download for Windows — Free
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <svg width="18" height="18" viewBox="0 0 48 48" fill="none"><path d="M24 4L4 14l20 10 20-10L24 4zM4 34l20 10 20-10M4 24l20 10 20-10" stroke="url(#fg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="fg" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs></svg>
+        <span>Opsis AI</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </div>
+      <p class="footer-copy">© 2025 Opsis AI. Built with Claude.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
