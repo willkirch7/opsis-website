@@ -368,6 +368,103 @@ h1 {
 .feature-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
 .feature-card p  { font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
 
+/* ── How to Use ─────────────────────────────────────────────────────────── */
+.how-to {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.step-card {
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--grad);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.step-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.step-card p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.shortcuts-box {
+  max-width: 440px;
+  margin: 48px auto 0;
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+
+.shortcuts-box h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.shortcut-row:last-child {
+  border-bottom: none;
+}
+
+.shortcut-row kbd {
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-family: 'Inter', monospace;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.shortcut-row span {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+@media (max-width: 768px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Pricing ────────────────────────────────────────────────────────────── */
 .pricing {
   padding: 120px 0;
