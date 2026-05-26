@@ -38,8 +38,8 @@ sections.forEach(s => sectionObserver.observe(s));
 /* ── Stripe checkout for paid plans ────────────────────────────────────── */
 const API_BASE = 'https://opsis-backend-production.up.railway.app';
 
-async function checkout(planId) {
-  const btn = event.target.closest('a');
+async function checkout(planId, e) {
+  const btn = (e || window.event).target.closest('a');
   const original = btn.textContent;
   btn.textContent = 'Redirecting…';
   btn.style.pointerEvents = 'none';
