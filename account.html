@@ -379,7 +379,11 @@
     /* Pricing tab — larger cards */
     #tab-pricing .plan-cards { gap: 20px; }
     #tab-pricing .plan-card { padding: 28px 24px; }
-    #tab-pricing .plan-card-name { font-size: 18px; margin-bottom: 4px; }
+    #tab-pricing .plan-card-name {
+      font-size: 18px; margin-bottom: 4px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .crown-icon { width: 18px; height: 18px; flex-shrink: 0; }
     #tab-pricing .plan-card-desc {
       font-size: 13px; color: var(--text-3); margin-bottom: 14px; line-height: 1.4;
     }
@@ -617,7 +621,7 @@
           <!-- Pro Monthly -->
           <div class="plan-card" id="pricingCardMonthly">
             <span class="plan-card-badge best-badge" id="pricingMonthlyBadge" style="display:none;">Recommended</span>
-            <div class="plan-card-name">Pro Monthly</div>
+            <div class="plan-card-name"><svg class="crown-icon" viewBox="0 0 24 24" fill="#f59e0b" width="18" height="18"><path d="M2.5 19.5h19v2h-19v-2zm19.57-9.36L16.5 14l-4.5-6-4.5 6-5.57-3.86L4.5 19.5h15l2.57-9.36z"/></svg> Pro Monthly</div>
             <div class="plan-card-desc">Full power, billed monthly. Ideal for students and professionals who need reliable answers.</div>
             <div class="plan-card-price"><span class="currency">$</span>20<span class="period">/mo</span></div>
 
@@ -636,7 +640,7 @@
           <!-- Pro Yearly -->
           <div class="plan-card recommended" id="pricingCardYearly">
             <span class="plan-card-badge best-badge" id="pricingYearlyBadge">Best Value</span>
-            <div class="plan-card-name">Pro Yearly</div>
+            <div class="plan-card-name"><svg class="crown-icon" viewBox="0 0 24 24" fill="#f59e0b" width="18" height="18"><path d="M2.5 19.5h19v2h-19v-2zm19.57-9.36L16.5 14l-4.5-6-4.5 6-5.57-3.86L4.5 19.5h15l2.57-9.36z"/></svg> Pro Yearly</div>
             <div class="plan-card-desc">Same Pro features at a 25% discount. Best for power users who are in it for the long run.</div>
             <div class="plan-card-price"><span class="currency">$</span>15<span class="period">/mo</span></div>
 
