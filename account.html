@@ -851,7 +851,7 @@
           // Profile tab
           const badge = document.getElementById('profilePlanBadge');
           if (plan !== 'free') {
-            badge.textContent = 'Pro';
+            badge.textContent = plan === 'pro_yearly' ? 'Pro Yearly' : 'Pro Monthly';
             badge.className = 'plan-badge-lg pro';
           } else {
             badge.textContent = 'Free';
@@ -860,11 +860,13 @@
 
           // Billing tab
           document.getElementById('billingCredits').textContent = balance.toLocaleString();
-          document.getElementById('billingPlan').textContent = plan !== 'free' ? 'Pro' : 'Free';
+          const planLabels = { free: 'Free', pro_monthly: 'Pro Monthly', pro_yearly: 'Pro Yearly' };
+          document.getElementById('billingPlan').textContent = planLabels[plan] || 'Pro';
           document.getElementById('billingPlan').style.fontSize = '28px';
 
           if (plan !== 'free') {
-            document.getElementById('billingPlanSub').textContent = 'Active subscription';
+            const subType = plan === 'pro_yearly' ? 'Billed yearly' : 'Billed monthly';
+            document.getElementById('billingPlanSub').textContent = subType;
             document.getElementById('sidebarPromo').classList.add('hidden');
             document.getElementById('cancelSubSection').style.display = 'block';
           } else {
