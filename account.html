@@ -470,7 +470,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
           Home
         </a>
-        <a href="/#pricing" class="sidebar-link">
+        <a href="#" class="sidebar-link" onclick="switchTab('pricing'); return false;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
           Pricing
         </a>
@@ -502,6 +502,7 @@
 
       <div class="dash-tabs">
         <button class="dash-tab active" data-tab="profile">Your Account</button>
+        <button class="dash-tab" data-tab="pricing">Pricing</button>
         <button class="dash-tab" data-tab="billing">Billing</button>
       </div>
 
@@ -532,6 +533,96 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
             Log Out
           </button>
+        </div>
+      </div>
+
+      <!-- Pricing Tab -->
+      <div class="tab-content" id="tab-pricing">
+        <div style="margin-bottom: 24px;">
+          <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Choose Your Plan</h2>
+          <p style="font-size: 14px; color: var(--text-2);">Select the plan that fits your needs. Upgrade anytime.</p>
+        </div>
+
+        <div class="plan-cards" id="pricingPlanCards">
+          <!-- Free -->
+          <div class="plan-card" id="pricingCardFree">
+            <span class="plan-card-badge current-badge" id="pricingFreeBadge">Current</span>
+            <div class="plan-card-name">Free</div>
+            <div class="plan-card-price"><span class="currency">$</span>0</div>
+            <ul class="plan-card-features">
+              <li>10 credits on signup</li>
+              <li>Default model (Haiku)</li>
+              <li>Standard support</li>
+            </ul>
+            <button class="plan-card-btn current-btn" id="pricingFreeBtn" disabled>Current Plan</button>
+          </div>
+
+          <!-- Pro Monthly -->
+          <div class="plan-card" id="pricingCardMonthly">
+            <span class="plan-card-badge best-badge" id="pricingMonthlyBadge" style="display:none;">Recommended</span>
+            <div class="plan-card-name">Pro Monthly</div>
+            <div class="plan-card-price"><span class="currency">$</span>20<span class="period">/mo</span></div>
+            <ul class="plan-card-features">
+              <li>1,000 analyses/month</li>
+              <li>Pro model (Sonnet)</li>
+              <li>Priority support</li>
+            </ul>
+            <a href="#" class="plan-card-btn primary" id="pricingMonthlyBtn" onclick="checkout('pro_monthly', event); return false;">Upgrade to Monthly</a>
+          </div>
+
+          <!-- Pro Yearly -->
+          <div class="plan-card recommended" id="pricingCardYearly">
+            <span class="plan-card-badge best-badge" id="pricingYearlyBadge">Best Value</span>
+            <div class="plan-card-name">Pro Yearly</div>
+            <div class="plan-card-price"><span class="currency">$</span>15<span class="period">/mo</span></div>
+            <ul class="plan-card-features">
+              <li>1,000 analyses/month</li>
+              <li>Pro model (Sonnet)</li>
+              <li>Priority support</li>
+              <li>Save $60/year</li>
+            </ul>
+            <a href="#" class="plan-card-btn primary" id="pricingYearlyBtn" onclick="checkout('pro_yearly', event); return false;">Upgrade to Yearly</a>
+          </div>
+        </div>
+
+        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);">
+          <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">Compare Plans</h3>
+          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <th style="text-align: left; padding: 10px 0; color: var(--text-3); font-weight: 500;">Feature</th>
+                <th style="text-align: center; padding: 10px 12px; color: var(--text-3); font-weight: 500;">Free</th>
+                <th style="text-align: center; padding: 10px 12px; color: var(--text-3); font-weight: 500;">Pro Monthly</th>
+                <th style="text-align: center; padding: 10px 12px; color: var(--text-3); font-weight: 500;">Pro Yearly</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 0; color: var(--text-2);">Credits</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">10</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">1,000/mo</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">1,000/mo</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 0; color: var(--text-2);">AI Model</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Default</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Pro (Sonnet)</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Pro (Sonnet)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 10px 0; color: var(--text-2);">Follow-ups</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">1 free</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Unlimited</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Unlimited</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; color: var(--text-2);">Price</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">$0</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">$20/mo</td>
+                <td style="text-align: center; padding: 10px 12px; color: var(--text);">$15/mo ($180/yr)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -773,7 +864,7 @@
 
       // Update sidebar active state
       document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-      const titles = { profile: 'Profile', billing: 'Billing' };
+      const titles = { profile: 'Profile', pricing: 'Pricing', billing: 'Billing' };
       document.getElementById('dashPageTitle').textContent = titles[tabName] || 'Profile';
 
       // Highlight matching sidebar link
@@ -837,16 +928,16 @@
     }
 
     // ── Plan Card State ─────────────────────────────────────────
-    function updatePlanCards(plan) {
-      const freeCard = document.getElementById('planCardFree');
-      const monthlyCard = document.getElementById('planCardMonthly');
-      const yearlyCard = document.getElementById('planCardYearly');
-      const freeBadge = document.getElementById('freeBadge');
-      const monthlyBadge = document.getElementById('monthlyBadge');
-      const yearlyBadge = document.getElementById('yearlyBadge');
-      const freeBtn = document.getElementById('freePlanBtn');
-      const monthlyBtn = document.getElementById('monthlyPlanBtn');
-      const yearlyBtn = document.getElementById('yearlyPlanBtn');
+    function applyPlanState(plan, ids) {
+      const freeCard = document.getElementById(ids.freeCard);
+      const monthlyCard = document.getElementById(ids.monthlyCard);
+      const yearlyCard = document.getElementById(ids.yearlyCard);
+      const freeBadge = document.getElementById(ids.freeBadge);
+      const monthlyBadge = document.getElementById(ids.monthlyBadge);
+      const yearlyBadge = document.getElementById(ids.yearlyBadge);
+      const freeBtn = document.getElementById(ids.freeBtn);
+      const monthlyBtn = document.getElementById(ids.monthlyBtn);
+      const yearlyBtn = document.getElementById(ids.yearlyBtn);
 
       // Reset all
       [freeCard, monthlyCard, yearlyCard].forEach(c => c.classList.remove('current'));
@@ -861,7 +952,6 @@
         freeBtn.className = 'plan-card-btn current-btn';
         freeBtn.disabled = true;
 
-        // Can upgrade to monthly or yearly
         monthlyBadge.style.display = '';
         monthlyBadge.textContent = 'Recommended';
         monthlyBadge.className = 'plan-card-badge best-badge';
@@ -887,12 +977,10 @@
         monthlyBtn.className = 'plan-card-btn current-btn';
         monthlyBtn.style.pointerEvents = 'none';
 
-        // Free — can't downgrade
         freeBtn.textContent = 'Downgrade N/A';
         freeBtn.className = 'plan-card-btn outline';
         freeBtn.disabled = true;
 
-        // Can upgrade to yearly
         yearlyBadge.style.display = '';
         yearlyBadge.textContent = 'Best Value';
         yearlyBadge.className = 'plan-card-badge best-badge';
@@ -910,7 +998,6 @@
         yearlyBtn.className = 'plan-card-btn current-btn';
         yearlyBtn.style.pointerEvents = 'none';
 
-        // Can't downgrade to either
         freeBtn.textContent = 'Downgrade N/A';
         freeBtn.className = 'plan-card-btn outline';
         freeBtn.disabled = true;
@@ -918,6 +1005,21 @@
         monthlyBtn.className = 'plan-card-btn outline';
         monthlyBtn.style.pointerEvents = 'none';
       }
+    }
+
+    function updatePlanCards(plan) {
+      // Billing tab cards
+      applyPlanState(plan, {
+        freeCard: 'planCardFree', monthlyCard: 'planCardMonthly', yearlyCard: 'planCardYearly',
+        freeBadge: 'freeBadge', monthlyBadge: 'monthlyBadge', yearlyBadge: 'yearlyBadge',
+        freeBtn: 'freePlanBtn', monthlyBtn: 'monthlyPlanBtn', yearlyBtn: 'yearlyPlanBtn',
+      });
+      // Pricing tab cards
+      applyPlanState(plan, {
+        freeCard: 'pricingCardFree', monthlyCard: 'pricingCardMonthly', yearlyCard: 'pricingCardYearly',
+        freeBadge: 'pricingFreeBadge', monthlyBadge: 'pricingMonthlyBadge', yearlyBadge: 'pricingYearlyBadge',
+        freeBtn: 'pricingFreeBtn', monthlyBtn: 'pricingMonthlyBtn', yearlyBtn: 'pricingYearlyBtn',
+      });
     }
 
     async function checkout(planId, e) {
