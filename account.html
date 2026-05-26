@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account — Opsis AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <style>
+    .account-page {
+      min-height: 100vh;
+      padding: 100px 20px 60px;
+      position: relative;
+    }
+
+    .account-container {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Auth card */
+    .auth-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .auth-card h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .auth-card .subtitle {
+      color: var(--text-2);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .auth-error {
+      display: none;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: #fca5a5;
+      font-size: 13px;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .auth-form input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .auth-form input:focus {
+      border-color: var(--accent);
+    }
+    .auth-form input::placeholder {
+      color: var(--text-3);
+    }
+
+    .auth-form button {
+      padding: 12px 16px;
+      background: var(--grad);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 4px;
+    }
+    .auth-form button:hover { opacity: 0.88; }
+    .auth-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .auth-switch {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-3);
+    }
+    .auth-switch a {
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .auth-switch a:hover { text-decoration: underline; }
+
+    /* Dashboard */
+    .dashboard { display: none; }
+
+    .dash-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .dash-header h1 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .dash-signout {
+      padding: 6px 14px;
+      background: transparent;
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius-sm);
+      color: var(--text-2);
+      font-size: 12px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .dash-signout:hover {
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+
+    .dash-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .dash-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-3);
+      margin-bottom: 8px;
+    }
+
+    .dash-email {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .dash-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-3);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .plan-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .plan-badge.free {
+      background: rgba(100, 116, 139, 0.15);
+      color: var(--text-2);
+    }
+    .plan-badge.pro {
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent);
+    }
+
+    .upgrade-section {
+      margin-top: 24px;
+    }
+
+    .upgrade-section .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .dash-footer {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .dash-footer a {
+      color: var(--text-3);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .dash-footer a:hover { color: var(--text); }
+
+    @media (max-width: 500px) {
+      .dash-stats { grid-template-columns: 1fr; }
+      .auth-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="nav-logo">
+        <a href="/" style="display:flex;align-items:center;gap:7px;text-decoration:none;color:inherit">
+          <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
+            <path d="M24 4L4 14l20 10 20-10L24 4zM4 34l20 10 20-10M4 24l20 10 20-10" stroke="url(#ng2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="ng2" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+          </svg>
+          <span>Opsis AI</span>
+        </a>
+      </div>
+      <a href="/" class="btn btn-outline">Back to Home</a>
+    </div>
+  </nav>
+
+  <div class="account-page">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="grid-lines"></div>
+    </div>
+
+    <div class="account-container">
+
+      <!-- Auth (sign in / sign up) -->
+      <div class="auth-card" id="authSection">
+        <h1 id="authTitle">Sign in to your account</h1>
+        <p class="subtitle" id="authSubtitle">View your credits, plan, and manage your account.</p>
+        <div class="auth-error" id="authError"></div>
+        <form class="auth-form" id="authForm">
+          <input type="email" id="authEmail" placeholder="Email" required autocomplete="email" />
+          <input type="password" id="authPassword" placeholder="Password" required autocomplete="current-password" />
+          <button type="submit" id="authSubmit">Sign In</button>
+        </form>
+        <p class="auth-switch">
+          <span id="authSwitchText">Don't have an account?</span>
+          <a id="authSwitchBtn" onclick="toggleAuthMode()">Sign Up</a>
+        </p>
+      </div>
+
+      <!-- Dashboard (shown when logged in) -->
+      <div class="dashboard" id="dashboard">
+        <div class="dash-header">
+          <h1>Your Account</h1>
+          <button class="dash-signout" onclick="signOut()">Sign Out</button>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-label">Email</div>
+          <div class="dash-email" id="dashEmail">—</div>
+        </div>
+
+        <div class="dash-stats">
+          <div class="stat-box">
+            <div class="stat-value" id="dashCredits">—</div>
+            <div class="stat-label">Credits Remaining</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="dashPlanDisplay">—</div>
+            <div class="stat-label">Current Plan</div>
+          </div>
+        </div>
+
+        <div class="upgrade-section" id="upgradeSection">
+          <div class="dash-stats" style="margin-top:16px">
+            <a href="#" class="btn btn-primary" onclick="checkout('pro_monthly', event); return false;">Pro Monthly — $20/mo</a>
+            <a href="#" class="btn btn-outline" onclick="checkout('pro_yearly', event); return false;">Pro Yearly — $15/mo</a>
+          </div>
+        </div>
+
+        <div class="dash-footer">
+          <a href="downloads/OpsisAI.exe" download>Download Desktop App</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://vzgapiiaqjgacodnmvvk.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_w5uVCxiSp6d-_i7qwsr7bQ_V14-aIOO';
+    const API_BASE = 'https://opsis-backend-production.up.railway.app';
+
+    let supabase;
+    let authMode = 'signin';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        showDashboard(session);
+      }
+    });
+
+    function toggleAuthMode() {
+      authMode = authMode === 'signin' ? 'signup' : 'signin';
+      const title = document.getElementById('authTitle');
+      const submit = document.getElementById('authSubmit');
+      const switchText = document.getElementById('authSwitchText');
+      const switchBtn = document.getElementById('authSwitchBtn');
+      const pw = document.getElementById('authPassword');
+
+      if (authMode === 'signup') {
+        title.textContent = 'Create your account';
+        submit.textContent = 'Sign Up';
+        switchText.textContent = 'Already have an account?';
+        switchBtn.textContent = 'Sign In';
+        pw.autocomplete = 'new-password';
+      } else {
+        title.textContent = 'Sign in to your account';
+        submit.textContent = 'Sign In';
+        switchText.textContent = "Don't have an account?";
+        switchBtn.textContent = 'Sign Up';
+        pw.autocomplete = 'current-password';
+      }
+      document.getElementById('authError').style.display = 'none';
+    }
+
+    document.getElementById('authForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('authEmail').value.trim();
+      const password = document.getElementById('authPassword').value;
+      const submit = document.getElementById('authSubmit');
+      const error = document.getElementById('authError');
+
+      if (!email || !password) return;
+
+      submit.disabled = true;
+      submit.textContent = authMode === 'signup' ? 'Creating account...' : 'Signing in...';
+      error.style.display = 'none';
+
+      try {
+        if (authMode === 'signup') {
+          // Use backend signup (auto-confirms)
+          const r = await fetch(`${API_BASE}/auth/signup`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+          });
+          const data = await r.json();
+          if (r.status >= 400) {
+            throw new Error(data.detail || 'Signup failed');
+          }
+          // Now sign in
+          const { data: signInData, error: signInErr } = await supabase.auth.signInWithPassword({ email, password });
+          if (signInErr) throw signInErr;
+          showDashboard(signInData.session);
+        } else {
+          const { data, error: err } = await supabase.auth.signInWithPassword({ email, password });
+          if (err) throw err;
+          showDashboard(data.session);
+        }
+      } catch (err) {
+        error.textContent = err.message || 'Something went wrong';
+        error.style.display = 'block';
+      }
+
+      submit.disabled = false;
+      submit.textContent = authMode === 'signup' ? 'Sign Up' : 'Sign In';
+    });
+
+    async function showDashboard(session) {
+      document.getElementById('authSection').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      document.getElementById('dashEmail').textContent = session.user.email;
+
+      // Fetch credits and plan
+      try {
+        const r = await fetch(`${API_BASE}/api/credits`, {
+          headers: { 'Authorization': `Bearer ${session.access_token}` },
+        });
+        if (r.ok) {
+          const data = await r.json();
+          document.getElementById('dashCredits').textContent = data.balance.toLocaleString();
+
+          const plan = data.plan || 'free';
+          const display = document.getElementById('dashPlanDisplay');
+          const upgradeSection = document.getElementById('upgradeSection');
+
+          if (plan !== 'free') {
+            display.textContent = 'Pro';
+            display.style.fontSize = '24px';
+            upgradeSection.style.display = 'none';
+          } else {
+            display.textContent = 'Free';
+            display.style.fontSize = '24px';
+            upgradeSection.style.display = 'block';
+          }
+        }
+      } catch (e) {
+        console.error('Failed to load account data', e);
+      }
+    }
+
+    async function signOut() {
+      await supabase.auth.signOut();
+      document.getElementById('authSection').style.display = 'block';
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('authEmail').value = '';
+      document.getElementById('authPassword').value = '';
+    }
+
+    async function checkout(planId, e) {
+      const btn = e.target.closest('a');
+      const original = btn.textContent;
+      btn.textContent = 'Redirecting...';
+      btn.style.pointerEvents = 'none';
+
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        const headers = { 'Content-Type': 'application/json' };
+        if (session) {
+          headers['Authorization'] = `Bearer ${session.access_token}`;
+        }
+
+        const r = await fetch(`${API_BASE}/billing/checkout`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({ plan_id: planId }),
+        });
+        const data = await r.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          alert(data.detail || 'Something went wrong.');
+          btn.textContent = original;
+          btn.style.pointerEvents = '';
+        }
+      } catch (err) {
+        alert('Could not connect. Please try again.');
+        btn.textContent = original;
+        btn.style.pointerEvents = '';
+      }
+    }
+  </script>
+</body>
+</html>
