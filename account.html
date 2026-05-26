@@ -324,13 +324,24 @@
     let supabase;
     let authMode = 'signin';
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        showDashboard(session);
+    function initSupabase() {
+      if (typeof window.supabase === 'undefined' || !window.supabase.createClient) {
+        console.error('Supabase JS not loaded');
+        return;
       }
-    });
+      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        if (session) {
+          showDashboard(session);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSupabase);
+    } else {
+      initSupabase();
+    }
 
     function toggleAuthMode() {
       authMode = authMode === 'signin' ? 'signup' : 'signin';
@@ -368,6 +379,14 @@
       submit.disabled = true;
       submit.textContent = authMode === 'signup' ? 'Creating account...' : 'Signing in...';
       error.style.display = 'none';
+
+      if (!supabase) {
+        error.textContent = 'Still loading — please try again in a moment.';
+        error.style.display = 'block';
+        submit.disabled = false;
+        submit.textContent = authMode === 'signup' ? 'Sign Up' : 'Sign In';
+        return;
+      }
 
       try {
         if (authMode === 'signup') {
