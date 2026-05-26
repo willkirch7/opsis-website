@@ -321,7 +321,7 @@
     const SUPABASE_ANON_KEY = 'sb_publishable_w5uVCxiSp6d-_i7qwsr7bQ_V14-aIOO';
     const API_BASE = 'https://opsis-backend-production.up.railway.app';
 
-    let supabase;
+    let sbClient;
     let authMode = 'signin';
 
     function initSupabase() {
@@ -329,8 +329,8 @@
         console.error('Supabase JS not loaded');
         return;
       }
-      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      supabase.auth.getSession().then(({ data: { session } }) => {
+      sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      sbClient.auth.getSession().then(({ data: { session } }) => {
         if (session) {
           showDashboard(session);
         }
@@ -380,7 +380,7 @@
       submit.textContent = authMode === 'signup' ? 'Creating account...' : 'Signing in...';
       error.style.display = 'none';
 
-      if (!supabase) {
+      if (!sbClient) {
         error.textContent = 'Still loading — please try again in a moment.';
         error.style.display = 'block';
         submit.disabled = false;
@@ -401,11 +401,11 @@
             throw new Error(data.detail || 'Signup failed');
           }
           // Now sign in
-          const { data: signInData, error: signInErr } = await supabase.auth.signInWithPassword({ email, password });
+          const { data: signInData, error: signInErr } = await sbClient.auth.signInWithPassword({ email, password });
           if (signInErr) throw signInErr;
           showDashboard(signInData.session);
         } else {
-          const { data, error: err } = await supabase.auth.signInWithPassword({ email, password });
+          const { data, error: err } = await sbClient.auth.signInWithPassword({ email, password });
           if (err) throw err;
           showDashboard(data.session);
         }
@@ -456,7 +456,7 @@
     }
 
     async function signOut() {
-      await supabase.auth.signOut();
+      await sbClient.auth.signOut();
       document.getElementById('authSection').style.display = 'block';
       document.getElementById('dashboard').style.display = 'none';
       document.getElementById('authEmail').value = '';
@@ -470,7 +470,7 @@
       btn.style.pointerEvents = 'none';
 
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const { data: { session } } = await sbClient.auth.getSession();
         const headers = { 'Content-Type': 'application/json' };
         if (session) {
           headers['Authorization'] = `Bearer ${session.access_token}`;
