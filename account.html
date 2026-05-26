@@ -391,7 +391,11 @@
           showDashboard(data.session);
         }
       } catch (err) {
-        error.textContent = err.message || 'Something went wrong';
+        let msg = err.message || 'Something went wrong';
+        if (msg.toLowerCase().includes('invalid login credentials')) {
+          msg = 'No account found with that email or password. Check your credentials or sign up.';
+        }
+        error.textContent = msg;
         error.style.display = 'block';
       }
 
