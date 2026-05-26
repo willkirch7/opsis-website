@@ -35,6 +35,21 @@ const sectionObserver = new IntersectionObserver(
 );
 sections.forEach(s => sectionObserver.observe(s));
 
+/* ── Auth-aware nav ────────────────────────────────────────────────────── */
+(async function() {
+  try {
+    const sb = window.supabase.createClient(
+      'https://vzgapiiaqjgacodnmvvk.supabase.co',
+      'sb_publishable_w5uVCxiSp6d-_i7qwsr7bQ_V14-aIOO'
+    );
+    const { data: { session } } = await sb.auth.getSession();
+    const btn = document.getElementById('navAuthBtn');
+    if (session && btn) {
+      btn.textContent = 'Account';
+    }
+  } catch (e) {}
+})();
+
 /* ── Stripe checkout for paid plans ────────────────────────────────────── */
 const API_BASE = 'https://opsis-backend-production.up.railway.app';
 
