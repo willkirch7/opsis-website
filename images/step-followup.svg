@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <defs>
+    <linearGradient id="msgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="sendGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="fuLogoGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="chatShadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="20" flood-color="#000" flood-opacity="0.7"/>
+    </filter>
+    <filter id="sendBtnGlow">
+      <feDropShadow dx="0" dy="1" stdDeviation="4" flood-color="#8b5cf6" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="400" fill="#0a0a0f"/>
+
+  <!-- App window -->
+  <g filter="url(#chatShadow)">
+    <rect x="120" y="15" width="400" height="370" rx="14" fill="#12121a"/>
+
+    <!-- Title bar -->
+    <rect x="120" y="15" width="400" height="32" rx="14" fill="#0a0a0f"/>
+    <rect x="120" y="35" width="400" height="12" fill="#0a0a0f"/>
+    <circle cx="142" cy="31" r="4" fill="#ff5f57"/>
+    <circle cx="156" cy="31" r="4" fill="#febc2e"/>
+    <circle cx="170" cy="31" r="4" fill="#28c840"/>
+    <!-- Logo in title -->
+    <g transform="translate(310, 31)">
+      <path d="M0,5 L-6,0 L0,-5 L6,0 Z" fill="url(#fuLogoGrad)" opacity="0.9"/>
+    </g>
+    <text x="330" y="35" font-family="system-ui, sans-serif" font-size="9" fill="#888">Opsis AI</text>
+  </g>
+
+  <!-- Screenshot thumbnail at top of conversation -->
+  <g transform="translate(155, 60)">
+    <rect x="0" y="0" width="330" height="36" rx="6" fill="#1a1a28"/>
+    <rect x="6" y="5" width="40" height="26" rx="3" fill="#0a0a0f"/>
+    <!-- Mini screenshot preview -->
+    <rect x="9" y="8" width="14" height="2" rx="1" fill="#8b5cf6" opacity="0.5"/>
+    <rect x="9" y="13" width="20" height="2" rx="1" fill="#555" opacity="0.5"/>
+    <rect x="9" y="18" width="16" height="2" rx="1" fill="#06b6d4" opacity="0.5"/>
+    <rect x="9" y="23" width="22" height="2" rx="1" fill="#555" opacity="0.5"/>
+    <text x="55" y="18" font-family="system-ui, sans-serif" font-size="9" fill="#888">Screen captured</text>
+    <text x="55" y="30" font-family="system-ui, sans-serif" font-size="8" fill="#555">1920 x 1080 - 2.4s ago</text>
+  </g>
+
+  <!-- AI response bubble -->
+  <g transform="translate(155, 108)">
+    <!-- AI avatar -->
+    <circle cx="12" cy="12" r="12" fill="#1a1a28" stroke="#2a2a3a" stroke-width="1"/>
+    <path d="M12,16 L8,12 L12,8 L16,12 Z" fill="url(#fuLogoGrad)" transform="scale(0.7) translate(5, 5)"/>
+
+    <!-- Message bubble -->
+    <rect x="30" y="0" width="295" height="100" rx="10" fill="#1a1a28"/>
+
+    <!-- AI message content -->
+    <text x="44" y="20" font-family="system-ui, sans-serif" font-size="10" fill="#ddd">I can see a <tspan fill="#8b5cf6">TypeError</tspan> on line 42 of your</text>
+    <text x="44" y="35" font-family="system-ui, sans-serif" font-size="10" fill="#ddd">code. The variable <tspan fill="#06b6d4" font-family="monospace" font-size="9">userData</tspan> is</text>
+    <text x="44" y="50" font-family="system-ui, sans-serif" font-size="10" fill="#ddd"><tspan fill="#06b6d4" font-family="monospace" font-size="9">undefined</tspan> because the API call on</text>
+    <text x="44" y="65" font-family="system-ui, sans-serif" font-size="10" fill="#ddd">line 38 hasn't resolved yet. You need</text>
+    <text x="44" y="80" font-family="system-ui, sans-serif" font-size="10" fill="#ddd">to <tspan fill="#8b5cf6">await</tspan> the response first.</text>
+
+    <!-- Timestamp -->
+    <text x="44" y="95" font-family="system-ui, sans-serif" font-size="7" fill="#444">just now</text>
+  </g>
+
+  <!-- User follow-up message bubble -->
+  <g transform="translate(195, 222)">
+    <rect x="0" y="0" width="280" height="36" rx="10" fill="url(#msgGrad)"/>
+    <text x="16" y="23" font-family="system-ui, sans-serif" font-size="11" fill="#fff">How do I fix this error?</text>
+    <!-- Timestamp -->
+    <text x="240" y="30" font-family="system-ui, sans-serif" font-size="7" fill="rgba(255,255,255,0.5)">now</text>
+  </g>
+
+  <!-- AI typing indicator -->
+  <g transform="translate(155, 270)">
+    <circle cx="12" cy="10" r="10" fill="#1a1a28" stroke="#2a2a3a" stroke-width="1"/>
+    <path d="M12,14 L9,10 L12,6 L15,10 Z" fill="url(#fuLogoGrad)" transform="scale(0.55) translate(9, 6)"/>
+    <rect x="28" y="0" width="70" height="22" rx="8" fill="#1a1a28"/>
+    <!-- Typing dots -->
+    <circle cx="44" cy="11" r="3" fill="#555" opacity="0.6"/>
+    <circle cx="56" cy="11" r="3" fill="#555" opacity="0.8"/>
+    <circle cx="68" cy="11" r="3" fill="#555" opacity="1"/>
+  </g>
+
+  <!-- Input area at bottom -->
+  <g transform="translate(135, 305)">
+    <!-- Input background -->
+    <rect x="0" y="0" width="370" height="44" rx="12" fill="#0a0a0f" stroke="#2a2a3a" stroke-width="1.5"/>
+
+    <!-- Input text -->
+    <text x="16" y="27" font-family="system-ui, sans-serif" font-size="11" fill="#888">Ask a follow-up question...</text>
+
+    <!-- Send button -->
+    <g filter="url(#sendBtnGlow)">
+      <rect x="326" y="7" width="34" height="30" rx="8" fill="url(#sendGrad)"/>
+    </g>
+    <!-- Send arrow -->
+    <g transform="translate(343, 22)">
+      <path d="M-5,5 L0,-5 L5,5 M0,-5 L0,6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Keyboard shortcut hint -->
+  <g transform="translate(260, 360)">
+    <rect x="0" y="0" width="36" height="16" rx="3" fill="#1a1a28" stroke="#2a2a3a" stroke-width="0.8"/>
+    <text x="18" y="12" font-family="system-ui, monospace" font-size="7" fill="#8b5cf6" text-anchor="middle">Ctrl</text>
+    <text x="41" y="12" font-family="system-ui, sans-serif" font-size="9" fill="#444">+</text>
+    <rect x="48" y="0" width="42" height="16" rx="3" fill="#1a1a28" stroke="#2a2a3a" stroke-width="0.8"/>
+    <text x="69" y="12" font-family="system-ui, monospace" font-size="7" fill="#8b5cf6" text-anchor="middle">Enter</text>
+    <text x="100" y="12" font-family="system-ui, sans-serif" font-size="8" fill="#444">to send</text>
+  </g>
+</svg>

@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#12121a"/>
+    </linearGradient>
+    <linearGradient id="overlayAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="editorBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a28"/>
+      <stop offset="100%" stop-color="#12121a"/>
+    </linearGradient>
+    <clipPath id="editorClip">
+      <rect x="60" y="50" width="520" height="300" rx="12"/>
+    </clipPath>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#8b5cf6" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="400" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#8b5cf6" stroke-width="1" transform="translate(80,0)"/>
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#8b5cf6" stroke-width="1" transform="translate(160,0)"/>
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#8b5cf6" stroke-width="1" transform="translate(240,0)"/>
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#8b5cf6" stroke-width="1" transform="translate(320,0)"/>
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#8b5cf6" stroke-width="1" transform="translate(400,0)"/>
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#8b5cf6" stroke-width="1" transform="translate(480,0)"/>
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#8b5cf6" stroke-width="1" transform="translate(560,0)"/>
+  </g>
+
+  <!-- Code editor window -->
+  <rect x="60" y="50" width="520" height="300" rx="12" fill="url(#editorBg)" stroke="#2a2a3a" stroke-width="1"/>
+
+  <!-- Editor titlebar -->
+  <rect x="60" y="50" width="520" height="36" rx="12" fill="#1e1e2e"/>
+  <rect x="60" y="74" width="520" height="12" fill="#1e1e2e"/>
+  <!-- Titlebar dots -->
+  <circle cx="82" cy="68" r="5" fill="#ff5f57" opacity="0.8"/>
+  <circle cx="98" cy="68" r="5" fill="#ffbd2e" opacity="0.8"/>
+  <circle cx="114" cy="68" r="5" fill="#28ca42" opacity="0.8"/>
+  <!-- Tab -->
+  <rect x="140" y="56" width="100" height="24" rx="4" fill="#1a1a28"/>
+  <text x="158" y="72" font-family="system-ui, sans-serif" font-size="9" fill="#888">main.py</text>
+
+  <!-- Line numbers gutter -->
+  <rect x="60" y="86" width="35" height="264" fill="#15151f" clip-path="url(#editorClip)"/>
+
+  <!-- Line numbers -->
+  <g font-family="monospace, Consolas" font-size="10" fill="#444" text-anchor="end">
+    <text x="88" y="106">38</text>
+    <text x="88" y="122">39</text>
+    <text x="88" y="138">40</text>
+    <text x="88" y="154">41</text>
+    <text x="88" y="170">42</text>
+    <text x="88" y="186">43</text>
+    <text x="88" y="202">44</text>
+    <text x="88" y="218">45</text>
+    <text x="88" y="234">46</text>
+    <text x="88" y="250">47</text>
+    <text x="88" y="266">48</text>
+    <text x="88" y="282">49</text>
+    <text x="88" y="298">50</text>
+    <text x="88" y="314">51</text>
+    <text x="88" y="330">52</text>
+  </g>
+
+  <!-- Highlight line 42 -->
+  <rect x="95" y="159" width="485" height="16" fill="#8b5cf6" opacity="0.08" clip-path="url(#editorClip)"/>
+
+  <!-- Code lines (abstract syntax-highlighted) -->
+  <g font-family="monospace, Consolas" font-size="10" clip-path="url(#editorClip)">
+    <!-- Line 38: def process_data(self, items): -->
+    <text x="105" y="106" fill="#c678dd">def</text>
+    <text x="130" y="106" fill="#61afef">process_data</text>
+    <text x="215" y="106" fill="#abb2bf">(</text>
+    <text x="222" y="106" fill="#e06c75">self</text>
+    <text x="245" y="106" fill="#abb2bf">,</text>
+    <text x="252" y="106" fill="#d19a66">items</text>
+    <text x="282" y="106" fill="#abb2bf">):</text>
+
+    <!-- Line 39: results = [] -->
+    <text x="120" y="122" fill="#abb2bf">results</text>
+    <text x="168" y="122" fill="#56b6c2">=</text>
+    <text x="180" y="122" fill="#abb2bf">[]</text>
+
+    <!-- Line 40: for item in items: -->
+    <text x="120" y="138" fill="#c678dd">for</text>
+    <text x="145" y="138" fill="#abb2bf">item</text>
+    <text x="172" y="138" fill="#c678dd">in</text>
+    <text x="190" y="138" fill="#d19a66">items</text>
+    <text x="218" y="138" fill="#abb2bf">:</text>
+
+    <!-- Line 41: if item.value > 0: -->
+    <text x="135" y="154" fill="#c678dd">if</text>
+    <text x="153" y="154" fill="#abb2bf">item.value</text>
+    <text x="218" y="154" fill="#56b6c2">></text>
+    <text x="230" y="154" fill="#d19a66">0</text>
+    <text x="237" y="154" fill="#abb2bf">:</text>
+
+    <!-- Line 42 (bug line): result = item.vale * 2 -->
+    <text x="150" y="170" fill="#abb2bf">result</text>
+    <text x="195" y="170" fill="#56b6c2">=</text>
+    <text x="207" y="170" fill="#abb2bf">item.</text>
+    <text x="232" y="170" fill="#e06c75">vale</text>
+    <text x="256" y="170" fill="#56b6c2">*</text>
+    <text x="268" y="170" fill="#d19a66">2</text>
+
+    <!-- Line 43: results.append(result) -->
+    <text x="150" y="186" fill="#abb2bf">results.</text>
+    <text x="202" y="186" fill="#61afef">append</text>
+    <text x="240" y="186" fill="#abb2bf">(result)</text>
+
+    <!-- Line 44: blank -->
+
+    <!-- Line 45: return results -->
+    <text x="120" y="218" fill="#c678dd">return</text>
+    <text x="162" y="218" fill="#abb2bf">results</text>
+
+    <!-- Line 46: blank -->
+
+    <!-- Line 47: def validate(self): -->
+    <text x="105" y="250" fill="#c678dd">def</text>
+    <text x="130" y="250" fill="#61afef">validate</text>
+    <text x="190" y="250" fill="#abb2bf">(</text>
+    <text x="197" y="250" fill="#e06c75">self</text>
+    <text x="218" y="250" fill="#abb2bf">):</text>
+
+    <!-- Line 48: """Check data integrity""" -->
+    <text x="120" y="266" fill="#98c379">"""Check data integrity"""</text>
+
+    <!-- Line 49: if not self.data: -->
+    <text x="120" y="282" fill="#c678dd">if</text>
+    <text x="135" y="282" fill="#c678dd">not</text>
+    <text x="158" y="282" fill="#e06c75">self</text>
+    <text x="180" y="282" fill="#abb2bf">.data:</text>
+
+    <!-- Line 50: raise ValueError -->
+    <text x="135" y="298" fill="#c678dd">raise</text>
+    <text x="170" y="298" fill="#e5c07b">ValueError</text>
+    <text x="235" y="298" fill="#abb2bf">(</text>
+    <text x="242" y="298" fill="#98c379">"Empty"</text>
+    <text x="285" y="298" fill="#abb2bf">)</text>
+
+    <!-- Line 51: return True -->
+    <text x="120" y="314" fill="#c678dd">return</text>
+    <text x="162" y="314" fill="#d19a66">True</text>
+
+    <!-- Line 52 -->
+    <text x="105" y="330" fill="#5c6370"># end of class</text>
+  </g>
+
+  <!-- Error squiggly under "vale" on line 42 -->
+  <path d="M232,173 l2,-2 l2,2 l2,-2 l2,2 l2,-2 l2,2 l2,-2 l2,2 l2,-2 l2,2" stroke="#e06c75" stroke-width="1.2" fill="none" opacity="0.8"/>
+
+  <!-- ===== OPSIS OVERLAY WINDOW ===== -->
+  <g filter="url(#shadow)">
+    <!-- Overlay background -->
+    <rect x="340" y="130" width="240" height="155" rx="12" fill="#13131f" stroke="#2a2a3a" stroke-width="1"/>
+
+    <!-- Gradient accent line at top -->
+    <rect x="340" y="130" width="240" height="3" rx="1.5" fill="url(#overlayAccent)"/>
+
+    <!-- Titlebar area -->
+    <rect x="340" y="133" width="240" height="28" fill="#18182a" rx="0"/>
+    <!-- Window dots -->
+    <circle cx="356" cy="147" r="3.5" fill="#3a3a4a"/>
+    <circle cx="368" cy="147" r="3.5" fill="#3a3a4a"/>
+    <circle cx="380" cy="147" r="3.5" fill="#3a3a4a"/>
+    <!-- App name -->
+    <text x="396" y="151" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#8b5cf6" opacity="0.9">Opsis</text>
+
+    <!-- Divider -->
+    <line x1="350" y1="161" x2="570" y2="161" stroke="#2a2a3a" stroke-width="0.5"/>
+
+    <!-- Chat bubble -->
+    <rect x="355" y="170" width="210" height="52" rx="8" fill="#1e1e30"/>
+    <!-- AI indicator dot -->
+    <circle cx="369" cy="185" r="4" fill="url(#overlayAccent)"/>
+    <!-- Chat text -->
+    <text x="380" y="187" font-family="system-ui, sans-serif" font-size="10" fill="#c8c8d8">Bug found on line 42:</text>
+    <text x="380" y="201" font-family="system-ui, sans-serif" font-size="10" fill="#888">item.</text>
+    <text x="410" y="201" font-family="system-ui, sans-serif" font-size="10" fill="#e06c75">vale</text>
+    <text x="432" y="201" font-family="system-ui, sans-serif" font-size="10" fill="#888"> should be </text>
+    <text x="488" y="201" font-family="system-ui, sans-serif" font-size="10" fill="#28ca42">value</text>
+
+    <!-- Suggestion action bar -->
+    <rect x="355" y="232" width="72" height="24" rx="6" fill="#8b5cf6" opacity="0.15"/>
+    <text x="369" y="248" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#8b5cf6">Apply Fix</text>
+
+    <rect x="435" y="232" width="72" height="24" rx="6" fill="#1e1e30"/>
+    <text x="452" y="248" font-family="system-ui, sans-serif" font-size="9" fill="#666">Explain</text>
+
+    <!-- Input area -->
+    <rect x="355" y="264" width="210" height="12" rx="4" fill="#1a1a28"/>
+    <text x="365" y="273" font-family="system-ui, sans-serif" font-size="8" fill="#444">Ask a follow-up...</text>
+  </g>
+
+  <!-- Subtle corner vignette -->
+  <rect width="640" height="400" fill="url(#bg)" opacity="0" rx="0"/>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <defs>
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="btnGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.4"/>
+    </linearGradient>
+    <filter id="shadow1">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="btnShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="8" flood-color="#8b5cf6" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="400" fill="#0a0a0f"/>
+
+  <!-- Browser window -->
+  <g filter="url(#shadow1)">
+    <rect x="70" y="30" width="500" height="300" rx="10" fill="#1a1a28"/>
+    <!-- Title bar -->
+    <rect x="70" y="30" width="500" height="36" rx="10" fill="#12121a"/>
+    <rect x="70" y="56" width="500" height="10" fill="#12121a"/>
+    <!-- Window dots -->
+    <circle cx="92" cy="48" r="5" fill="#ff5f57"/>
+    <circle cx="110" cy="48" r="5" fill="#febc2e"/>
+    <circle cx="128" cy="48" r="5" fill="#28c840"/>
+    <!-- Address bar -->
+    <rect x="150" y="38" width="300" height="20" rx="4" fill="#0a0a0f"/>
+    <text x="200" y="52" font-family="system-ui, sans-serif" font-size="9" fill="#666">opsis.ai/download</text>
+    <!-- Tab -->
+    <rect x="145" y="30" width="90" height="26" rx="6" fill="#1a1a28"/>
+    <text x="165" y="47" font-family="system-ui, sans-serif" font-size="8" fill="#999">Opsis AI</text>
+  </g>
+
+  <!-- Page content area -->
+  <!-- Heading -->
+  <text x="320" y="105" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">Download Opsis AI</text>
+  <text x="320" y="125" font-family="system-ui, sans-serif" font-size="10" fill="#888" text-anchor="middle">AI-powered screen analysis for Windows</text>
+
+  <!-- Download button with glow -->
+  <ellipse cx="320" cy="175" rx="90" ry="26" fill="url(#btnGlow)" opacity="0.6"/>
+  <g filter="url(#btnShadow)">
+    <rect x="235" y="150" width="170" height="44" rx="22" fill="url(#btnGrad)"/>
+  </g>
+  <!-- Arrow icon -->
+  <g transform="translate(280, 163)">
+    <line x1="8" y1="0" x2="8" y2="14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <polyline points="2,9 8,16 14,9" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="340" y="177" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">Download</text>
+
+  <!-- Version info -->
+  <text x="320" y="210" font-family="system-ui, sans-serif" font-size="9" fill="#555" text-anchor="middle">v2.1.0  |  Windows 10/11  |  64-bit</text>
+
+  <!-- Downloaded file icon appearing below -->
+  <g transform="translate(270, 230)">
+    <!-- File icon -->
+    <rect x="0" y="0" width="60" height="72" rx="4" fill="#12121a" stroke="#2a2a3a" stroke-width="1.5"/>
+    <path d="M40,0 L60,20 L40,20 Z" fill="#2a2a3a"/>
+    <!-- Exe icon -->
+    <rect x="12" y="32" width="36" height="18" rx="3" fill="url(#btnGrad)" opacity="0.8"/>
+    <text x="30" y="44" font-family="system-ui, monospace" font-size="8" fill="#fff" text-anchor="middle" font-weight="bold">.exe</text>
+    <!-- File name -->
+    <text x="30" y="65" font-family="system-ui, sans-serif" font-size="6" fill="#888" text-anchor="middle">OpsisAI.exe</text>
+  </g>
+
+  <!-- Download arrow animation hint -->
+  <g transform="translate(340, 238)">
+    <text x="0" y="8" font-family="system-ui, sans-serif" font-size="9" fill="#06b6d4" opacity="0.8">Downloading...</text>
+    <!-- Progress bar -->
+    <rect x="0" y="14" width="80" height="4" rx="2" fill="#0a0a0f"/>
+    <rect x="0" y="14" width="55" height="4" rx="2" fill="url(#btnGrad)"/>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect x="70" y="315" width="500" height="15" rx="0" fill="#12121a"/>
+  <rect x="70" y="320" width="500" height="10" rx="0" fill="#12121a"/>
+  <rect x="560" y="320" width="10" height="10" rx="10" fill="#12121a"/>
+  <text x="85" y="327" font-family="system-ui, sans-serif" font-size="7" fill="#555">OpsisAI-Setup-2.1.0.exe - 48.2 MB</text>
+</svg>

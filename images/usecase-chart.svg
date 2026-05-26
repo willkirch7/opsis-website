@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#12121a"/>
+    </linearGradient>
+    <linearGradient id="overlayAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="chartBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a28"/>
+      <stop offset="100%" stop-color="#15151f"/>
+    </linearGradient>
+    <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d3fce"/>
+    </linearGradient>
+    <linearGradient id="bar2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891a8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#8b5cf6" flood-opacity="0.3"/>
+    </filter>
+    <filter id="barGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <clipPath id="chartClip">
+      <rect x="70" y="40" width="500" height="320" rx="12"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="400" fill="url(#bg)"/>
+
+  <!-- Dashboard window -->
+  <rect x="70" y="40" width="500" height="320" rx="12" fill="url(#chartBg)" stroke="#2a2a3a" stroke-width="1"/>
+
+  <!-- Dashboard titlebar -->
+  <rect x="70" y="40" width="500" height="36" rx="12" fill="#1e1e2e"/>
+  <rect x="70" y="64" width="500" height="12" fill="#1e1e2e"/>
+  <circle cx="92" cy="58" r="5" fill="#ff5f57" opacity="0.8"/>
+  <circle cx="108" cy="58" r="5" fill="#ffbd2e" opacity="0.8"/>
+  <circle cx="124" cy="58" r="5" fill="#28ca42" opacity="0.8"/>
+  <rect x="150" y="48" width="260" height="20" rx="10" fill="#15151f"/>
+  <text x="175" y="62" font-family="system-ui, sans-serif" font-size="9" fill="#555">dashboard.company.io/analytics</text>
+
+  <g clip-path="url(#chartClip)">
+    <!-- Dashboard header -->
+    <text x="100" y="100" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#d8d8e8">Quarterly Revenue Report</text>
+    <text x="100" y="116" font-family="system-ui, sans-serif" font-size="9" fill="#666">FY 2026  |  All regions  |  Updated May 25</text>
+
+    <!-- KPI cards row -->
+    <rect x="100" y="128" width="110" height="45" rx="6" fill="#1e1e30" stroke="#2a2a3a" stroke-width="0.5"/>
+    <text x="112" y="144" font-family="system-ui, sans-serif" font-size="8" fill="#666">Total Revenue</text>
+    <text x="112" y="162" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#d8d8e8">$4.2M</text>
+    <text x="170" y="162" font-family="system-ui, sans-serif" font-size="8" fill="#28ca42">+23%</text>
+
+    <rect x="220" y="128" width="110" height="45" rx="6" fill="#1e1e30" stroke="#2a2a3a" stroke-width="0.5"/>
+    <text x="232" y="144" font-family="system-ui, sans-serif" font-size="8" fill="#666">New Customers</text>
+    <text x="232" y="162" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#d8d8e8">1,847</text>
+    <text x="285" y="162" font-family="system-ui, sans-serif" font-size="8" fill="#28ca42">+12%</text>
+
+    <rect x="340" y="128" width="110" height="45" rx="6" fill="#1e1e30" stroke="#2a2a3a" stroke-width="0.5"/>
+    <text x="352" y="144" font-family="system-ui, sans-serif" font-size="8" fill="#666">Avg. Deal Size</text>
+    <text x="352" y="162" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#d8d8e8">$2,271</text>
+    <text x="410" y="162" font-family="system-ui, sans-serif" font-size="8" fill="#e06c75">-3%</text>
+
+    <!-- Chart area -->
+    <text x="100" y="200" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#aaa">Revenue by Quarter</text>
+
+    <!-- Y-axis labels -->
+    <text x="100" y="218" font-family="system-ui, sans-serif" font-size="7" fill="#444" text-anchor="end">$5M</text>
+    <text x="100" y="248" font-family="system-ui, sans-serif" font-size="7" fill="#444" text-anchor="end">$3M</text>
+    <text x="100" y="278" font-family="system-ui, sans-serif" font-size="7" fill="#444" text-anchor="end">$1M</text>
+    <text x="100" y="305" font-family="system-ui, sans-serif" font-size="7" fill="#444" text-anchor="end">$0</text>
+
+    <!-- Grid lines -->
+    <line x1="110" y1="214" x2="520" y2="214" stroke="#2a2a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+    <line x1="110" y1="244" x2="520" y2="244" stroke="#2a2a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+    <line x1="110" y1="274" x2="520" y2="274" stroke="#2a2a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+    <line x1="110" y1="304" x2="520" y2="304" stroke="#2a2a3a" stroke-width="0.5"/>
+
+    <!-- Bar chart - Q1 2025 -->
+    <rect x="130" y="264" width="18" height="40" rx="3" fill="url(#bar1)" opacity="0.5"/>
+    <rect x="152" y="272" width="18" height="32" rx="3" fill="url(#bar2)" opacity="0.5"/>
+    <text x="150" y="316" font-family="system-ui, sans-serif" font-size="7" fill="#555" text-anchor="middle">Q1 '25</text>
+
+    <!-- Bar chart - Q2 2025 -->
+    <rect x="200" y="254" width="18" height="50" rx="3" fill="url(#bar1)" opacity="0.5"/>
+    <rect x="222" y="260" width="18" height="44" rx="3" fill="url(#bar2)" opacity="0.5"/>
+    <text x="220" y="316" font-family="system-ui, sans-serif" font-size="7" fill="#555" text-anchor="middle">Q2 '25</text>
+
+    <!-- Bar chart - Q3 2025 -->
+    <rect x="270" y="244" width="18" height="60" rx="3" fill="url(#bar1)" opacity="0.6"/>
+    <rect x="292" y="252" width="18" height="52" rx="3" fill="url(#bar2)" opacity="0.6"/>
+    <text x="290" y="316" font-family="system-ui, sans-serif" font-size="7" fill="#555" text-anchor="middle">Q3 '25</text>
+
+    <!-- Bar chart - Q4 2025 -->
+    <rect x="340" y="236" width="18" height="68" rx="3" fill="url(#bar1)" opacity="0.7"/>
+    <rect x="362" y="240" width="18" height="64" rx="3" fill="url(#bar2)" opacity="0.7"/>
+    <text x="360" y="316" font-family="system-ui, sans-serif" font-size="7" fill="#555" text-anchor="middle">Q4 '25</text>
+
+    <!-- Bar chart - Q1 2026 (current, highlighted) -->
+    <rect x="410" y="222" width="18" height="82" rx="3" fill="url(#bar1)" opacity="0.9" filter="url(#barGlow)"/>
+    <rect x="432" y="228" width="18" height="76" rx="3" fill="url(#bar2)" opacity="0.9" filter="url(#barGlow)"/>
+    <text x="430" y="316" font-family="system-ui, sans-serif" font-size="7" fill="#888" text-anchor="middle">Q1 '26</text>
+
+    <!-- Trend line -->
+    <polyline points="150,260 220,250 290,240 360,232 430,218" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.4"/>
+
+    <!-- Legend -->
+    <rect x="460" y="196" width="8" height="8" rx="2" fill="url(#bar1)"/>
+    <text x="472" y="204" font-family="system-ui, sans-serif" font-size="7" fill="#666">Product</text>
+    <rect x="460" y="210" width="8" height="8" rx="2" fill="url(#bar2)"/>
+    <text x="472" y="218" font-family="system-ui, sans-serif" font-size="7" fill="#666">Services</text>
+  </g>
+
+  <!-- ===== OPSIS OVERLAY WINDOW ===== -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="120" width="245" height="185" rx="12" fill="#13131f" stroke="#2a2a3a" stroke-width="1"/>
+
+    <!-- Gradient accent line -->
+    <rect x="350" y="120" width="245" height="3" rx="1.5" fill="url(#overlayAccent)"/>
+
+    <!-- Titlebar -->
+    <rect x="350" y="123" width="245" height="28" fill="#18182a"/>
+    <circle cx="366" cy="137" r="3.5" fill="#3a3a4a"/>
+    <circle cx="378" cy="137" r="3.5" fill="#3a3a4a"/>
+    <circle cx="390" cy="137" r="3.5" fill="#3a3a4a"/>
+    <text x="406" y="141" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#8b5cf6" opacity="0.9">Opsis</text>
+
+    <line x1="360" y1="151" x2="585" y2="151" stroke="#2a2a3a" stroke-width="0.5"/>
+
+    <!-- Mode tag -->
+    <rect x="365" y="158" width="58" height="18" rx="4" fill="#06b6d4" opacity="0.12"/>
+    <text x="376" y="170" font-family="system-ui, sans-serif" font-size="8" font-weight="600" fill="#06b6d4">Analyze</text>
+
+    <!-- Chat bubble -->
+    <rect x="365" y="182" width="215" height="75" rx="8" fill="#1e1e30"/>
+    <circle cx="379" cy="198" r="4" fill="url(#overlayAccent)"/>
+    <text x="390" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#c8c8d8">Revenue grew </text>
+    <text x="465" y="200" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#28ca42">23% YoY</text>
+    <text x="390" y="216" font-family="system-ui, sans-serif" font-size="10" fill="#c8c8d8">driven by product sales.</text>
+    <text x="390" y="232" font-family="system-ui, sans-serif" font-size="10" fill="#888">However, avg. deal size</text>
+    <text x="390" y="246" font-family="system-ui, sans-serif" font-size="10" fill="#e06c75">declined 3%</text>
+    <text x="450" y="246" font-family="system-ui, sans-serif" font-size="10" fill="#888"> in Q1.</text>
+
+    <!-- Action buttons -->
+    <rect x="365" y="265" width="75" height="24" rx="6" fill="#8b5cf6" opacity="0.15"/>
+    <text x="375" y="281" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#8b5cf6">Deep dive</text>
+
+    <rect x="448" y="265" width="65" height="24" rx="6" fill="#1e1e30"/>
+    <text x="460" y="281" font-family="system-ui, sans-serif" font-size="9" fill="#666">Export</text>
+
+    <rect x="521" y="265" width="55" height="24" rx="6" fill="#1e1e30"/>
+    <text x="535" y="281" font-family="system-ui, sans-serif" font-size="9" fill="#666">Alert</text>
+
+    <!-- Input -->
+    <rect x="365" y="296" width="215" height="4" rx="2" fill="#1a1a28"/>
+  </g>
+</svg>

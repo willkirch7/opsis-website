@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#12121a"/>
+    </linearGradient>
+    <linearGradient id="overlayAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="docBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a28"/>
+      <stop offset="100%" stop-color="#15151f"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#8b5cf6" flood-opacity="0.3"/>
+    </filter>
+    <clipPath id="docClip">
+      <rect x="80" y="45" width="480" height="310" rx="12"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="400" fill="url(#bg)"/>
+
+  <!-- Document/article window -->
+  <rect x="80" y="45" width="480" height="310" rx="12" fill="url(#docBg)" stroke="#2a2a3a" stroke-width="1"/>
+
+  <!-- Doc titlebar -->
+  <rect x="80" y="45" width="480" height="36" rx="12" fill="#1e1e2e"/>
+  <rect x="80" y="69" width="480" height="12" fill="#1e1e2e"/>
+  <circle cx="102" cy="63" r="5" fill="#ff5f57" opacity="0.8"/>
+  <circle cx="118" cy="63" r="5" fill="#ffbd2e" opacity="0.8"/>
+  <circle cx="134" cy="63" r="5" fill="#28ca42" opacity="0.8"/>
+  <!-- URL bar -->
+  <rect x="160" y="53" width="280" height="20" rx="10" fill="#15151f"/>
+  <text x="185" y="67" font-family="system-ui, sans-serif" font-size="9" fill="#555">arxiv.org/abs/2406.12345</text>
+  <!-- Lock icon hint -->
+  <circle cx="175" cy="63" r="4" fill="none" stroke="#28ca42" stroke-width="1" opacity="0.6"/>
+
+  <!-- Article content area -->
+  <g clip-path="url(#docClip)">
+    <!-- Article title -->
+    <text x="120" y="110" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#d8d8e8">Attention Mechanisms in Modern</text>
+    <text x="120" y="132" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#d8d8e8">Language Architectures</text>
+
+    <!-- Authors line -->
+    <text x="120" y="152" font-family="system-ui, sans-serif" font-size="9" fill="#666">J. Chen, M. Williams, R. Patel  |  May 2026  |  Stanford AI Lab</text>
+
+    <!-- Divider -->
+    <line x1="120" y1="162" x2="520" y2="162" stroke="#2a2a3a" stroke-width="0.5"/>
+
+    <!-- Abstract heading -->
+    <text x="120" y="182" font-family="Georgia, serif" font-size="11" font-weight="700" fill="#aaa">Abstract</text>
+
+    <!-- Paragraph lines (abstract) -->
+    <rect x="120" y="192" width="400" height="6" rx="3" fill="#333" opacity="0.5"/>
+    <rect x="120" y="204" width="380" height="6" rx="3" fill="#333" opacity="0.5"/>
+    <rect x="120" y="216" width="395" height="6" rx="3" fill="#333" opacity="0.5"/>
+    <rect x="120" y="228" width="310" height="6" rx="3" fill="#333" opacity="0.5"/>
+
+    <!-- Section heading -->
+    <text x="120" y="256" font-family="Georgia, serif" font-size="12" font-weight="700" fill="#bbb">1. Introduction</text>
+
+    <!-- Body paragraph lines -->
+    <rect x="120" y="268" width="400" height="5" rx="2.5" fill="#2a2a35" opacity="0.7"/>
+    <rect x="120" y="279" width="390" height="5" rx="2.5" fill="#2a2a35" opacity="0.7"/>
+    <rect x="120" y="290" width="405" height="5" rx="2.5" fill="#2a2a35" opacity="0.7"/>
+    <rect x="120" y="301" width="370" height="5" rx="2.5" fill="#2a2a35" opacity="0.7"/>
+    <rect x="120" y="312" width="395" height="5" rx="2.5" fill="#2a2a35" opacity="0.7"/>
+    <rect x="120" y="323" width="360" height="5" rx="2.5" fill="#2a2a35" opacity="0.7"/>
+    <rect x="120" y="334" width="250" height="5" rx="2.5" fill="#2a2a35" opacity="0.7"/>
+  </g>
+
+  <!-- Selection highlight on some text -->
+  <rect x="120" y="189" width="400" height="50" rx="2" fill="#8b5cf6" opacity="0.06"/>
+
+  <!-- ===== OPSIS OVERLAY WINDOW ===== -->
+  <g filter="url(#shadow)">
+    <rect x="330" y="110" width="245" height="170" rx="12" fill="#13131f" stroke="#2a2a3a" stroke-width="1"/>
+
+    <!-- Gradient accent line -->
+    <rect x="330" y="110" width="245" height="3" rx="1.5" fill="url(#overlayAccent)"/>
+
+    <!-- Titlebar -->
+    <rect x="330" y="113" width="245" height="28" fill="#18182a"/>
+    <circle cx="346" cy="127" r="3.5" fill="#3a3a4a"/>
+    <circle cx="358" cy="127" r="3.5" fill="#3a3a4a"/>
+    <circle cx="370" cy="127" r="3.5" fill="#3a3a4a"/>
+    <text x="386" y="131" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#8b5cf6" opacity="0.9">Opsis</text>
+
+    <line x1="340" y1="141" x2="565" y2="141" stroke="#2a2a3a" stroke-width="0.5"/>
+
+    <!-- Mode indicator -->
+    <rect x="345" y="148" width="65" height="18" rx="4" fill="#06b6d4" opacity="0.12"/>
+    <text x="356" y="160" font-family="system-ui, sans-serif" font-size="8" font-weight="600" fill="#06b6d4">Summarize</text>
+
+    <!-- Chat bubble -->
+    <rect x="345" y="172" width="215" height="62" rx="8" fill="#1e1e30"/>
+    <circle cx="359" cy="188" r="4" fill="url(#overlayAccent)"/>
+    <text x="370" y="190" font-family="system-ui, sans-serif" font-size="10" fill="#c8c8d8">This paper argues that</text>
+    <text x="370" y="204" font-family="system-ui, sans-serif" font-size="10" fill="#c8c8d8">multi-head attention can be</text>
+    <text x="370" y="218" font-family="system-ui, sans-serif" font-size="10" fill="#888">replaced with sparse variants...</text>
+
+    <!-- Action buttons -->
+    <rect x="345" y="242" width="68" height="24" rx="6" fill="#8b5cf6" opacity="0.15"/>
+    <text x="355" y="258" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#8b5cf6">Full summary</text>
+
+    <rect x="420" y="242" width="60" height="24" rx="6" fill="#1e1e30"/>
+    <text x="434" y="258" font-family="system-ui, sans-serif" font-size="9" fill="#666">Critique</text>
+
+    <rect x="487" y="242" width="55" height="24" rx="6" fill="#1e1e30"/>
+    <text x="499" y="258" font-family="system-ui, sans-serif" font-size="9" fill="#666">Cite</text>
+  </g>
+</svg>

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <defs>
+    <linearGradient id="analyzeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="analyzeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="appShadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="20" flood-color="#000" flood-opacity="0.7"/>
+    </filter>
+    <filter id="bigGlow">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="btnPulse">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="clickGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background - faint desktop representation -->
+  <rect width="640" height="400" fill="#0a0a0f"/>
+
+  <!-- Faint background content (simulating a screen behind the overlay) -->
+  <g opacity="0.15">
+    <!-- Fake code editor lines -->
+    <rect x="20" y="30" width="600" height="340" rx="6" fill="#1a1a28"/>
+    <rect x="40" y="55" width="180" height="8" rx="2" fill="#8b5cf6"/>
+    <rect x="40" y="75" width="260" height="8" rx="2" fill="#555"/>
+    <rect x="60" y="95" width="200" height="8" rx="2" fill="#06b6d4"/>
+    <rect x="60" y="115" width="300" height="8" rx="2" fill="#555"/>
+    <rect x="60" y="135" width="150" height="8" rx="2" fill="#555"/>
+    <rect x="40" y="155" width="220" height="8" rx="2" fill="#8b5cf6"/>
+    <rect x="60" y="175" width="280" height="8" rx="2" fill="#555"/>
+    <rect x="60" y="195" width="190" height="8" rx="2" fill="#06b6d4"/>
+    <rect x="60" y="215" width="240" height="8" rx="2" fill="#555"/>
+    <rect x="40" y="235" width="120" height="8" rx="2" fill="#555"/>
+    <rect x="40" y="255" width="340" height="8" rx="2" fill="#555"/>
+    <rect x="40" y="275" width="200" height="8" rx="2" fill="#8b5cf6"/>
+    <rect x="60" y="295" width="160" height="8" rx="2" fill="#555"/>
+  </g>
+
+  <!-- Semi-transparent overlay -->
+  <rect width="640" height="400" fill="#0a0a0f" opacity="0.6"/>
+
+  <!-- App overlay panel -->
+  <g filter="url(#appShadow)">
+    <rect x="150" y="60" width="340" height="280" rx="16" fill="#12121a" stroke="#2a2a3a" stroke-width="1"/>
+
+    <!-- Window bar -->
+    <rect x="150" y="60" width="340" height="30" rx="16" fill="#0a0a0f"/>
+    <rect x="150" y="78" width="340" height="12" fill="#0a0a0f"/>
+    <circle cx="172" cy="75" r="4" fill="#ff5f57"/>
+    <circle cx="186" cy="75" r="4" fill="#febc2e"/>
+    <circle cx="200" cy="75" r="4" fill="#28c840"/>
+
+    <!-- Logo and title -->
+    <g transform="translate(310, 75)">
+      <path d="M0,5 L-6,0 L0,-5 L6,0 Z" fill="url(#analyzeGrad)" opacity="0.9"/>
+    </g>
+    <text x="330" y="79" font-family="system-ui, sans-serif" font-size="9" fill="#888">Opsis AI</text>
+  </g>
+
+  <!-- Opsis branding in panel -->
+  <text x="320" y="125" font-family="system-ui, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="600">Ready to Analyze</text>
+  <text x="320" y="145" font-family="system-ui, sans-serif" font-size="10" fill="#555" text-anchor="middle">Capture your screen and get AI insights</text>
+
+  <!-- Scan/eye icon -->
+  <g transform="translate(320, 185)" opacity="0.6">
+    <ellipse cx="0" cy="0" rx="25" ry="15" fill="none" stroke="url(#analyzeGrad)" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="7" fill="none" stroke="url(#analyzeGrad)" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="3" fill="url(#analyzeGrad)"/>
+  </g>
+
+  <!-- Big Analyze Screen button with glow -->
+  <g filter="url(#btnPulse)">
+    <ellipse cx="320" cy="240" rx="110" ry="30" fill="url(#analyzeGlow)"/>
+  </g>
+  <rect x="220" y="218" width="200" height="44" rx="22" fill="url(#analyzeGrad)"/>
+
+  <!-- Click/glow effect on button -->
+  <circle cx="320" cy="240" r="50" fill="url(#clickGlow)"/>
+
+  <!-- Button icon and text -->
+  <g transform="translate(255, 232)">
+    <!-- Screen/capture icon -->
+    <rect x="0" y="0" width="16" height="12" rx="2" fill="none" stroke="#fff" stroke-width="1.5"/>
+    <circle cx="8" cy="6" r="3" fill="none" stroke="#fff" stroke-width="1.2"/>
+  </g>
+  <text x="332" y="245" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">Analyze Screen</text>
+
+  <!-- Cursor near button -->
+  <g transform="translate(370, 248)">
+    <path d="M0,0 L0,17 L4.5,13 L8.5,21 L11,20 L7,12 L12.5,12 Z" fill="#fff" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <!-- Keyboard shortcut -->
+  <g transform="translate(258, 275)">
+    <rect x="0" y="0" width="36" height="18" rx="4" fill="#1a1a28" stroke="#2a2a3a" stroke-width="1"/>
+    <text x="18" y="13" font-family="system-ui, monospace" font-size="8" fill="#8b5cf6" text-anchor="middle">Ctrl</text>
+    <text x="42" y="13" font-family="system-ui, sans-serif" font-size="10" fill="#444">+</text>
+    <rect x="50" y="0" width="36" height="18" rx="4" fill="#1a1a28" stroke="#2a2a3a" stroke-width="1"/>
+    <text x="68" y="13" font-family="system-ui, monospace" font-size="8" fill="#8b5cf6" text-anchor="middle">Shift</text>
+    <text x="92" y="13" font-family="system-ui, sans-serif" font-size="10" fill="#444">+</text>
+    <rect x="100" y="0" width="24" height="18" rx="4" fill="#1a1a28" stroke="#2a2a3a" stroke-width="1"/>
+    <text x="112" y="13" font-family="system-ui, monospace" font-size="8" fill="#8b5cf6" text-anchor="middle">A</text>
+  </g>
+
+  <!-- Status dots at bottom -->
+  <circle cx="305" cy="315" r="3" fill="url(#analyzeGrad)"/>
+  <circle cx="320" cy="315" r="3" fill="#2a2a3a"/>
+  <circle cx="335" cy="315" r="3" fill="#2a2a3a"/>
+</svg>
