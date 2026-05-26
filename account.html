@@ -80,7 +80,7 @@
     .dash-sidebar {
       position: fixed;
       top: 0; left: 0; bottom: 0;
-      width: 260px;
+      width: 300px;
       background: var(--surface);
       border-right: 1px solid var(--border);
       display: flex;
@@ -139,7 +139,7 @@
 
     /* Main content area */
     .dash-main {
-      margin-left: 260px;
+      margin-left: 300px;
       height: 100vh;
       overflow-y: auto;
       padding: 48px 60px;
@@ -269,22 +269,112 @@
       background: rgba(139, 92, 246, 0.15); color: var(--accent);
     }
 
-    .billing-upgrade {
-      background: var(--surface);
-      border: 1px solid var(--border-hi);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-    .billing-upgrade h3 {
+    /* Change plan section */
+    .change-plan-title {
       font-size: 16px; font-weight: 600; margin-bottom: 4px;
     }
-    .billing-upgrade p {
+    .change-plan-sub {
       font-size: 13px; color: var(--text-2); margin-bottom: 20px;
     }
-    .billing-upgrade-btns {
-      display: flex; gap: 12px;
+
+    .plan-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-bottom: 24px;
     }
-    .billing-upgrade-btns .btn { flex: 1; justify-content: center; }
+
+    .plan-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .plan-card:hover {
+      border-color: rgba(139,92,246,0.3);
+      box-shadow: 0 8px 32px rgba(139,92,246,0.08);
+    }
+    .plan-card.current {
+      border-color: rgba(139,92,246,0.4);
+      background: rgba(139,92,246,0.04);
+    }
+    .plan-card.current::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--grad);
+    }
+    .plan-card.recommended {
+      border-color: rgba(6,182,212,0.4);
+    }
+    .plan-card.recommended::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--grad);
+    }
+
+    .plan-card-badge {
+      position: absolute; top: 12px; right: 12px;
+      font-size: 10px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.5px; padding: 3px 8px; border-radius: 99px;
+    }
+    .plan-card-badge.current-badge {
+      background: rgba(139,92,246,0.15); color: var(--accent);
+    }
+    .plan-card-badge.best-badge {
+      background: rgba(6,182,212,0.15); color: var(--accent-2);
+    }
+
+    .plan-card-name {
+      font-size: 15px; font-weight: 600; margin-bottom: 8px;
+    }
+    .plan-card-price {
+      font-size: 32px; font-weight: 700; line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    .plan-card-price .currency { font-size: 18px; font-weight: 600; }
+    .plan-card-price .period { font-size: 13px; font-weight: 400; color: var(--text-3); }
+    .plan-card-price .original {
+      font-size: 14px; color: var(--text-3); text-decoration: line-through; margin-right: 6px;
+    }
+
+    .plan-card-features {
+      list-style: none; margin-top: 16px; display: flex;
+      flex-direction: column; gap: 8px;
+    }
+    .plan-card-features li {
+      font-size: 12px; color: var(--text-2);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .plan-card-features li::before {
+      content: ''; width: 4px; height: 4px;
+      border-radius: 50%; background: var(--accent); flex-shrink: 0;
+    }
+
+    .plan-card-btn {
+      display: block; width: 100%; margin-top: 18px;
+      padding: 10px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 600; text-align: center;
+      cursor: pointer; border: none; font-family: inherit;
+      transition: all 0.2s; text-decoration: none;
+    }
+    .plan-card-btn.primary {
+      background: var(--grad); color: white;
+      box-shadow: 0 0 16px rgba(139,92,246,0.25);
+    }
+    .plan-card-btn.primary:hover {
+      box-shadow: 0 0 24px rgba(139,92,246,0.4);
+    }
+    .plan-card-btn.outline {
+      background: transparent; color: var(--text-2);
+      border: 1px solid var(--border-hi);
+    }
+    .plan-card-btn.outline:hover { border-color: var(--accent); color: var(--text); }
+    .plan-card-btn.current-btn {
+      background: rgba(139,92,246,0.1); color: var(--accent);
+      cursor: default;
+    }
+    .plan-card-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .billing-download {
       margin-top: 24px; padding-top: 24px;
@@ -298,13 +388,38 @@
     .billing-download a:hover { color: var(--text); }
     .billing-download svg { width: 16px; height: 16px; }
 
+    /* Sidebar promo with timer */
+    .promo-timer {
+      display: flex; justify-content: center; gap: 12px;
+      margin: 10px 0 14px;
+    }
+    .timer-block { text-align: center; }
+    .timer-value {
+      font-size: 22px; font-weight: 700; color: var(--text);
+      line-height: 1.2;
+    }
+    .timer-label {
+      font-size: 9px; color: var(--text-3); text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .promo-discount {
+      font-size: 13px; font-weight: 600; margin-bottom: 4px;
+    }
+    .promo-discount .highlight {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
     /* ── Responsive ──────────────────────────────────────────────── */
     @media (max-width: 768px) {
       .dash-sidebar { display: none; }
       .dash-main { margin-left: 0; padding: 24px 20px; }
       .billing-grid { grid-template-columns: 1fr; }
       .profile-header { flex-direction: column; text-align: center; }
-      .billing-upgrade-btns { flex-direction: column; }
+      .plan-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -370,9 +485,14 @@
       </nav>
 
       <div class="sidebar-promo" id="sidebarPromo">
-        <div class="sidebar-promo-title">Upgrade to <span class="grad-text">Pro</span></div>
-        <div class="sidebar-promo-sub">1,000 analyses/month + Pro model</div>
-        <a href="#" class="btn btn-primary" onclick="checkout('pro_monthly', event); return false;">Get Pro — $20/mo</a>
+        <div class="promo-discount"><span class="highlight">10% off</span> Yearly Plan</div>
+        <div class="sidebar-promo-sub">Lock in $13.50/mo — limited time</div>
+        <div class="promo-timer" id="promoTimer">
+          <div class="timer-block"><div class="timer-value" id="timerHours">00</div><div class="timer-label">Hours</div></div>
+          <div class="timer-block"><div class="timer-value" id="timerMins">00</div><div class="timer-label">Min</div></div>
+          <div class="timer-block"><div class="timer-value" id="timerSecs">00</div><div class="timer-label">Sec</div></div>
+        </div>
+        <a href="#" class="btn btn-primary" onclick="checkout('pro_yearly', event); return false;" style="width:100%;justify-content:center;font-size:13px;padding:9px 16px;">Claim Offer</a>
       </div>
     </aside>
 
@@ -430,12 +550,50 @@
           </div>
         </div>
 
-        <div class="billing-upgrade" id="billingUpgrade">
-          <h3>Upgrade your plan</h3>
-          <p>Get 1,000 analyses per month, the Pro model (Sonnet), and priority support.</p>
-          <div class="billing-upgrade-btns">
-            <a href="#" class="btn btn-primary" onclick="checkout('pro_monthly', event); return false;">Pro Monthly — $20/mo</a>
-            <a href="#" class="btn btn-outline" onclick="checkout('pro_yearly', event); return false;">Pro Yearly — $15/mo</a>
+        <div id="changePlanSection">
+          <div class="change-plan-title">Change Plan</div>
+          <div class="change-plan-sub">Upgrade your plan to unlock more features. Downgrades are not available.</div>
+
+          <div class="plan-cards">
+            <!-- Free -->
+            <div class="plan-card" id="planCardFree">
+              <span class="plan-card-badge current-badge" id="freeBadge">Current</span>
+              <div class="plan-card-name">Free</div>
+              <div class="plan-card-price"><span class="currency">$</span>0</div>
+              <ul class="plan-card-features">
+                <li>10 credits on signup</li>
+                <li>Default model (Haiku)</li>
+                <li>Standard support</li>
+              </ul>
+              <button class="plan-card-btn current-btn" id="freePlanBtn" disabled>Current Plan</button>
+            </div>
+
+            <!-- Pro Monthly -->
+            <div class="plan-card" id="planCardMonthly">
+              <span class="plan-card-badge best-badge" id="monthlyBadge" style="display:none;">Recommended</span>
+              <div class="plan-card-name">Pro Monthly</div>
+              <div class="plan-card-price"><span class="currency">$</span>20<span class="period">/mo</span></div>
+              <ul class="plan-card-features">
+                <li>1,000 analyses/month</li>
+                <li>Pro model (Sonnet)</li>
+                <li>Priority support</li>
+              </ul>
+              <a href="#" class="plan-card-btn primary" id="monthlyPlanBtn" onclick="checkout('pro_monthly', event); return false;">Upgrade to Monthly</a>
+            </div>
+
+            <!-- Pro Yearly -->
+            <div class="plan-card recommended" id="planCardYearly">
+              <span class="plan-card-badge best-badge" id="yearlyBadge">Best Value</span>
+              <div class="plan-card-name">Pro Yearly</div>
+              <div class="plan-card-price" id="yearlyPriceDisplay"><span class="currency">$</span>15<span class="period">/mo</span></div>
+              <ul class="plan-card-features">
+                <li>1,000 analyses/month</li>
+                <li>Pro model (Sonnet)</li>
+                <li>Priority support</li>
+                <li>Save $60/year</li>
+              </ul>
+              <a href="#" class="plan-card-btn primary" id="yearlyPlanBtn" onclick="checkout('pro_yearly', event); return false;">Upgrade to Yearly</a>
+            </div>
           </div>
         </div>
 
@@ -579,13 +737,23 @@
 
           if (plan !== 'free') {
             document.getElementById('billingPlanSub').textContent = 'Active subscription';
-            document.getElementById('billingUpgrade').style.display = 'none';
             document.getElementById('sidebarPromo').classList.add('hidden');
           } else {
             document.getElementById('billingPlanSub').textContent = '10 free credits on signup';
-            document.getElementById('billingUpgrade').style.display = 'block';
-            document.getElementById('sidebarPromo').classList.remove('hidden');
+            // Show promo only if within 24hrs of account creation
+            const createdAt = session.user.created_at;
+            const created = new Date(createdAt).getTime();
+            const elapsed = Date.now() - created;
+            if (elapsed < 24 * 60 * 60 * 1000) {
+              document.getElementById('sidebarPromo').classList.remove('hidden');
+              startPromoTimer(createdAt);
+            } else {
+              document.getElementById('sidebarPromo').classList.add('hidden');
+            }
           }
+
+          // Update plan cards with proper state
+          updatePlanCards(plan);
         }
       } catch (e) {
         console.error('Failed to load account data', e);
@@ -635,6 +803,120 @@
         alert('Password updated successfully.');
       } catch (e) {
         alert('Failed to update password: ' + e.message);
+      }
+    }
+
+    // ── 24hr Promo Timer ──────────────────────────────────────
+    let promoInterval = null;
+
+    function startPromoTimer(createdAt) {
+      const created = new Date(createdAt).getTime();
+      const expires = created + 24 * 60 * 60 * 1000; // 24 hours
+
+      function tick() {
+        const now = Date.now();
+        const remaining = expires - now;
+
+        if (remaining <= 0) {
+          document.getElementById('sidebarPromo').classList.add('hidden');
+          clearInterval(promoInterval);
+          return;
+        }
+
+        const hrs = Math.floor(remaining / (1000 * 60 * 60));
+        const mins = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((remaining % (1000 * 60)) / 1000);
+
+        document.getElementById('timerHours').textContent = String(hrs).padStart(2, '0');
+        document.getElementById('timerMins').textContent = String(mins).padStart(2, '0');
+        document.getElementById('timerSecs').textContent = String(secs).padStart(2, '0');
+      }
+
+      tick();
+      promoInterval = setInterval(tick, 1000);
+    }
+
+    // ── Plan Card State ─────────────────────────────────────────
+    function updatePlanCards(plan) {
+      const freeCard = document.getElementById('planCardFree');
+      const monthlyCard = document.getElementById('planCardMonthly');
+      const yearlyCard = document.getElementById('planCardYearly');
+      const freeBadge = document.getElementById('freeBadge');
+      const monthlyBadge = document.getElementById('monthlyBadge');
+      const yearlyBadge = document.getElementById('yearlyBadge');
+      const freeBtn = document.getElementById('freePlanBtn');
+      const monthlyBtn = document.getElementById('monthlyPlanBtn');
+      const yearlyBtn = document.getElementById('yearlyPlanBtn');
+
+      // Reset all
+      [freeCard, monthlyCard, yearlyCard].forEach(c => c.classList.remove('current'));
+      [freeBadge, monthlyBadge, yearlyBadge].forEach(b => { b.style.display = 'none'; });
+
+      if (plan === 'free') {
+        freeCard.classList.add('current');
+        freeBadge.style.display = '';
+        freeBadge.textContent = 'Current';
+        freeBadge.className = 'plan-card-badge current-badge';
+        freeBtn.textContent = 'Current Plan';
+        freeBtn.className = 'plan-card-btn current-btn';
+        freeBtn.disabled = true;
+
+        // Can upgrade to monthly or yearly
+        monthlyBadge.style.display = '';
+        monthlyBadge.textContent = 'Recommended';
+        monthlyBadge.className = 'plan-card-badge best-badge';
+        monthlyBtn.textContent = 'Upgrade to Monthly';
+        monthlyBtn.className = 'plan-card-btn primary';
+        monthlyBtn.style.pointerEvents = '';
+        monthlyBtn.onclick = function(e) { checkout('pro_monthly', e); return false; };
+
+        yearlyBadge.style.display = '';
+        yearlyBadge.textContent = 'Best Value';
+        yearlyBadge.className = 'plan-card-badge best-badge';
+        yearlyBtn.textContent = 'Upgrade to Yearly';
+        yearlyBtn.className = 'plan-card-btn primary';
+        yearlyBtn.style.pointerEvents = '';
+        yearlyBtn.onclick = function(e) { checkout('pro_yearly', e); return false; };
+
+      } else if (plan === 'pro_monthly') {
+        monthlyCard.classList.add('current');
+        monthlyBadge.style.display = '';
+        monthlyBadge.textContent = 'Current';
+        monthlyBadge.className = 'plan-card-badge current-badge';
+        monthlyBtn.textContent = 'Current Plan';
+        monthlyBtn.className = 'plan-card-btn current-btn';
+        monthlyBtn.style.pointerEvents = 'none';
+
+        // Free — can't downgrade
+        freeBtn.textContent = 'Downgrade N/A';
+        freeBtn.className = 'plan-card-btn outline';
+        freeBtn.disabled = true;
+
+        // Can upgrade to yearly
+        yearlyBadge.style.display = '';
+        yearlyBadge.textContent = 'Best Value';
+        yearlyBadge.className = 'plan-card-badge best-badge';
+        yearlyBtn.textContent = 'Switch to Yearly';
+        yearlyBtn.className = 'plan-card-btn primary';
+        yearlyBtn.style.pointerEvents = '';
+        yearlyBtn.onclick = function(e) { checkout('pro_yearly', e); return false; };
+
+      } else if (plan === 'pro_yearly') {
+        yearlyCard.classList.add('current');
+        yearlyBadge.style.display = '';
+        yearlyBadge.textContent = 'Current';
+        yearlyBadge.className = 'plan-card-badge current-badge';
+        yearlyBtn.textContent = 'Current Plan';
+        yearlyBtn.className = 'plan-card-btn current-btn';
+        yearlyBtn.style.pointerEvents = 'none';
+
+        // Can't downgrade to either
+        freeBtn.textContent = 'Downgrade N/A';
+        freeBtn.className = 'plan-card-btn outline';
+        freeBtn.disabled = true;
+        monthlyBtn.textContent = 'Downgrade N/A';
+        monthlyBtn.className = 'plan-card-btn outline';
+        monthlyBtn.style.pointerEvents = 'none';
       }
     }
 
