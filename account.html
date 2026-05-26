@@ -376,6 +376,40 @@
     }
     .plan-card-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
+    /* Pricing tab — larger cards */
+    #tab-pricing .plan-cards { gap: 20px; }
+    #tab-pricing .plan-card { padding: 28px 24px; }
+    #tab-pricing .plan-card-name { font-size: 18px; margin-bottom: 4px; }
+    #tab-pricing .plan-card-desc {
+      font-size: 13px; color: var(--text-3); margin-bottom: 14px; line-height: 1.4;
+    }
+    #tab-pricing .plan-card-price { font-size: 36px; margin-bottom: 6px; }
+    #tab-pricing .plan-card-price .currency { font-size: 20px; }
+    #tab-pricing .plan-card-price .period { font-size: 14px; }
+    #tab-pricing .plan-card-features { gap: 10px; margin-top: 20px; }
+    #tab-pricing .plan-card-features li { font-size: 13px; }
+    #tab-pricing .plan-card-features li::before {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: rgba(139,92,246,0.12); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #tab-pricing .plan-card-features .check-icon {
+      width: 16px; height: 16px; flex-shrink: 0; color: var(--accent);
+    }
+    #tab-pricing .plan-card-features .x-icon {
+      width: 16px; height: 16px; flex-shrink: 0; color: var(--text-3); opacity: 0.5;
+    }
+    #tab-pricing .plan-card-features li { gap: 8px; }
+    #tab-pricing .plan-card-features li::before { display: none; }
+    #tab-pricing .plan-card-btn { margin-top: 22px; padding: 12px; font-size: 14px; }
+    .plan-card-divider {
+      height: 1px; background: var(--border); margin: 16px 0;
+    }
+    .plan-card-section-label {
+      font-size: 10px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--text-3); margin-bottom: 10px;
+    }
+
     .billing-download {
       margin-top: 24px; padding-top: 24px;
       border-top: 1px solid var(--border);
@@ -538,9 +572,9 @@
 
       <!-- Pricing Tab -->
       <div class="tab-content" id="tab-pricing">
-        <div style="margin-bottom: 24px;">
-          <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Choose Your Plan</h2>
-          <p style="font-size: 14px; color: var(--text-2);">Select the plan that fits your needs. Upgrade anytime.</p>
+        <div style="margin-bottom: 28px;">
+          <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Choose Your Plan</h2>
+          <p style="font-size: 14px; color: var(--text-2); line-height: 1.5; max-width: 520px;">Pick the plan that matches how you use Opsis. Start free, then upgrade when you need more power and unlimited follow-ups.</p>
         </div>
 
         <div class="plan-cards" id="pricingPlanCards">
@@ -548,11 +582,17 @@
           <div class="plan-card" id="pricingCardFree">
             <span class="plan-card-badge current-badge" id="pricingFreeBadge">Current</span>
             <div class="plan-card-name">Free</div>
+            <div class="plan-card-desc">Try Opsis with no commitment. Great for seeing what screen analysis can do.</div>
             <div class="plan-card-price"><span class="currency">$</span>0</div>
+
+            <div class="plan-card-divider"></div>
+            <div class="plan-card-section-label">What's included</div>
             <ul class="plan-card-features">
-              <li>10 credits on signup</li>
-              <li>Default model (Haiku)</li>
-              <li>Standard support</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 10 one-time credits</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Default AI model (Haiku)</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 1 follow-up per analysis</li>
+              <li><svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> <span style="color:var(--text-3)">No Pro model access</span></li>
+              <li><svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> <span style="color:var(--text-3)">No unlimited follow-ups</span></li>
             </ul>
             <button class="plan-card-btn current-btn" id="pricingFreeBtn" disabled>Current Plan</button>
           </div>
@@ -561,11 +601,17 @@
           <div class="plan-card" id="pricingCardMonthly">
             <span class="plan-card-badge best-badge" id="pricingMonthlyBadge" style="display:none;">Recommended</span>
             <div class="plan-card-name">Pro Monthly</div>
+            <div class="plan-card-desc">Full power, billed monthly. Ideal for students and professionals who need reliable answers.</div>
             <div class="plan-card-price"><span class="currency">$</span>20<span class="period">/mo</span></div>
+
+            <div class="plan-card-divider"></div>
+            <div class="plan-card-section-label">Everything in Free, plus</div>
             <ul class="plan-card-features">
-              <li>1,000 analyses/month</li>
-              <li>Pro model (Sonnet)</li>
-              <li>Priority support</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 1,000 analyses per month</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Pro AI model (Sonnet)</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Unlimited follow-up questions</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Priority support</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Cancel anytime</li>
             </ul>
             <a href="#" class="plan-card-btn primary" id="pricingMonthlyBtn" onclick="checkout('pro_monthly', event); return false;">Upgrade to Monthly</a>
           </div>
@@ -574,55 +620,20 @@
           <div class="plan-card recommended" id="pricingCardYearly">
             <span class="plan-card-badge best-badge" id="pricingYearlyBadge">Best Value</span>
             <div class="plan-card-name">Pro Yearly</div>
+            <div class="plan-card-desc">Same Pro features at a 25% discount. Best for power users who are in it for the long run.</div>
             <div class="plan-card-price"><span class="currency">$</span>15<span class="period">/mo</span></div>
-            <ul class="plan-card-features">
-              <li>1,000 analyses/month</li>
-              <li>Pro model (Sonnet)</li>
-              <li>Priority support</li>
-              <li>Save $60/year</li>
-            </ul>
-            <a href="#" class="plan-card-btn primary" id="pricingYearlyBtn" onclick="checkout('pro_yearly', event); return false;">Upgrade to Yearly</a>
-          </div>
-        </div>
 
-        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);">
-          <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">Compare Plans</h3>
-          <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-            <thead>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <th style="text-align: left; padding: 10px 0; color: var(--text-3); font-weight: 500;">Feature</th>
-                <th style="text-align: center; padding: 10px 12px; color: var(--text-3); font-weight: 500;">Free</th>
-                <th style="text-align: center; padding: 10px 12px; color: var(--text-3); font-weight: 500;">Pro Monthly</th>
-                <th style="text-align: center; padding: 10px 12px; color: var(--text-3); font-weight: 500;">Pro Yearly</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 10px 0; color: var(--text-2);">Credits</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">10</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">1,000/mo</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">1,000/mo</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 10px 0; color: var(--text-2);">AI Model</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Default</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Pro (Sonnet)</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Pro (Sonnet)</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 10px 0; color: var(--text-2);">Follow-ups</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">1 free</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Unlimited</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">Unlimited</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px 0; color: var(--text-2);">Price</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">$0</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">$20/mo</td>
-                <td style="text-align: center; padding: 10px 12px; color: var(--text);">$15/mo ($180/yr)</td>
-              </tr>
-            </tbody>
-          </table>
+            <div class="plan-card-divider"></div>
+            <div class="plan-card-section-label">Everything in Pro Monthly, plus</div>
+            <ul class="plan-card-features">
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 1,000 analyses per month</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Pro AI model (Sonnet)</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Unlimited follow-up questions</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Priority support</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Save $60/year (billed $180/yr)</li>
+            </ul>
+            <a href="#" class="plan-card-btn primary" id="pricingYearlyBtn" onclick="checkout('pro_yearly', event); return false;">Upgrade to Yearly — Save 25%</a>
+          </div>
         </div>
       </div>
 
