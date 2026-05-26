@@ -138,7 +138,7 @@ body {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 120px 0 0;
+  padding: 90px 0 0;
 }
 .hero-bg {
   position: absolute;
@@ -208,7 +208,7 @@ body {
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
 h1 {
-  font-size: clamp(48px, 7vw, 76px);
+  font-size: clamp(52px, 8vw, 84px);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -2.5px;
