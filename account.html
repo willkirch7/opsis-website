@@ -867,23 +867,15 @@
           if (plan !== 'free') {
             const subType = plan === 'pro_yearly' ? 'Billed yearly' : 'Billed monthly';
             document.getElementById('billingPlanSub').textContent = subType;
-            document.getElementById('sidebarPromo').classList.add('hidden');
             document.getElementById('cancelSubSection').style.display = 'block';
           } else {
             document.getElementById('cancelSubSection').style.display = 'none';
             document.getElementById('billingPlanSub').textContent = '10 free credits on signup';
-            // Show promo only if within 24hrs of account creation
-            const createdAt = session.user.created_at;
-            const created = new Date(createdAt).getTime();
-            const elapsed = Date.now() - created;
-            console.log('PROMO DEBUG:', { createdAt, created, elapsed, hoursAgo: elapsed/3600000, plan });
-            if (true || elapsed < 24 * 60 * 60 * 1000) {  // TODO: remove true || after testing
-              document.getElementById('sidebarPromo').classList.remove('hidden');
-              startPromoTimer(new Date().toISOString());  // TODO: revert to createdAt after testing
-            } else {
-              document.getElementById('sidebarPromo').classList.add('hidden');
-            }
           }
+
+          // Show promo — force for testing (TODO: revert to createdAt + free-only check)
+          document.getElementById('sidebarPromo').classList.remove('hidden');
+          startPromoTimer(new Date().toISOString());
 
           // Update plan cards with proper state
           updatePlanCards(plan);
