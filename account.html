@@ -879,7 +879,7 @@
             console.log('PROMO DEBUG:', { createdAt, created, elapsed, hoursAgo: elapsed/3600000, plan });
             if (true || elapsed < 24 * 60 * 60 * 1000) {  // TODO: remove true || after testing
               document.getElementById('sidebarPromo').classList.remove('hidden');
-              startPromoTimer(createdAt);
+              startPromoTimer(new Date().toISOString());  // TODO: revert to createdAt after testing
             } else {
               document.getElementById('sidebarPromo').classList.add('hidden');
             }
