@@ -876,7 +876,8 @@
             const createdAt = session.user.created_at;
             const created = new Date(createdAt).getTime();
             const elapsed = Date.now() - created;
-            if (elapsed < 24 * 60 * 60 * 1000) {
+            console.log('PROMO DEBUG:', { createdAt, created, elapsed, hoursAgo: elapsed/3600000, plan });
+            if (true || elapsed < 24 * 60 * 60 * 1000) {  // TODO: remove true || after testing
               document.getElementById('sidebarPromo').classList.remove('hidden');
               startPromoTimer(createdAt);
             } else {
