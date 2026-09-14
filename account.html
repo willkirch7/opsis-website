@@ -675,6 +675,12 @@
           </div>
         </div>
 
+        <div id="topupSection">
+          <div class="change-plan-title">Need more credits?</div>
+          <div class="change-plan-sub">Add 500 analyses to your balance for $15. One-time purchase, never expires, and your current plan stays exactly as it is.</div>
+          <a href="#" class="plan-card-btn primary" id="topupBtn" style="display:inline-block;max-width:280px;" onclick="buyTopup(event); return false;">Buy 500 credits — $15</a>
+        </div>
+
         <div id="changePlanSection">
           <div class="change-plan-title">Change Plan</div>
           <div class="change-plan-sub">Upgrade your plan to unlock more features. Downgrades are not available.</div>
@@ -1096,6 +1102,35 @@
         freeBadge: 'pricingFreeBadge', monthlyBadge: 'pricingMonthlyBadge', yearlyBadge: 'pricingYearlyBadge',
         freeBtn: 'pricingFreeBtn', monthlyBtn: 'pricingMonthlyBtn', yearlyBtn: 'pricingYearlyBtn',
       });
+    }
+
+    async function buyTopup(e) {
+      const btn = document.getElementById('topupBtn');
+      const original = btn.textContent;
+      btn.textContent = 'Redirecting...';
+      btn.style.pointerEvents = 'none';
+
+      try {
+        const r = await fetch(`${API_BASE}/billing/topup`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${currentSession.access_token}`,
+          },
+        });
+        const data = await r.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          alert(data.detail || 'Something went wrong.');
+          btn.textContent = original;
+          btn.style.pointerEvents = '';
+        }
+      } catch (err) {
+        alert('Could not connect. Please try again.');
+        btn.textContent = original;
+        btn.style.pointerEvents = '';
+      }
     }
 
     async function checkout(planId, e) {
