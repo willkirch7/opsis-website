@@ -66,9 +66,58 @@
     .auth-form button:hover { opacity: 0.88; }
     .auth-form button:disabled { opacity: 0.5; cursor: not-allowed; }
 
+    .auth-hint { font-size: 12px; color: var(--text-3); margin: -4px 0 2px; text-align: left; }
+    .auth-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      text-align: left;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--text-2);
+      margin: 2px 0 4px;
+      cursor: pointer;
+    }
+    .auth-consent input {
+      width: 15px;
+      height: 15px;
+      margin: 2px 0 0;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .auth-consent a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .auth-consent a:hover { text-decoration: underline; }
     .auth-switch { margin-top: 16px; font-size: 13px; color: var(--text-3); }
     .auth-switch a { color: var(--accent); cursor: pointer; font-weight: 600; text-decoration: none; }
     .auth-switch a:hover { text-decoration: underline; }
+    .auth-legal {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-3);
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .auth-legal a { color: var(--text-3); text-decoration: none; }
+    .auth-legal a:hover { color: var(--accent-2); }
+
+    /* The dashboard is a fixed-height, overflow-hidden layout, so a page
+       footer would be clipped. Legal links live at the foot of the sidebar
+       instead, where they stay reachable on every tab. */
+    .sidebar-legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      padding: 16px 12px 0;
+      margin-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 11.5px;
+    }
+    .sidebar-legal a { color: var(--text-3); text-decoration: none; }
+    .sidebar-legal a:hover { color: var(--accent-2); }
 
     /* ── Dashboard Layout ────────────────────────────────────────── */
     .dash-layout {
@@ -171,6 +220,46 @@
 
     .tab-content { display: none; }
     .tab-content.active { display: block; }
+
+    /* Privacy & Data tab */
+    .data-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+    .data-card.danger { border-color: rgba(239,68,68,0.28); }
+    .data-card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .data-card-desc {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .data-card-foot { font-size: 13px; color: var(--text-3); margin-top: 14px; }
+    .data-card-foot a { color: var(--accent-2); }
+    .data-list { list-style: none; margin: 0 0 4px; padding: 0; }
+    .data-list li {
+      font-size: 13.5px;
+      color: var(--text-2);
+      padding: 5px 0 5px 24px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .data-list li::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 11px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-2);
+    }
+    .data-list.negative { margin-top: 10px; }
+    .data-list.negative li::before { background: var(--text-3); }
 
     /* ── Profile Tab ─────────────────────────────────────────────── */
     .profile-header {
@@ -499,12 +588,27 @@
       <div class="auth-error" id="authError"></div>
       <form class="auth-form" id="authForm">
         <input type="email" id="authEmail" placeholder="Email" required autocomplete="email" />
-        <input type="password" id="authPassword" placeholder="Password" required autocomplete="current-password" />
+        <input type="password" id="authPassword" placeholder="Password" required autocomplete="current-password" minlength="8" />
+        <p class="auth-hint" id="authPwHint" style="display:none">At least 8 characters.</p>
+        <!-- Clickwrap. An unticked-by-default box that blocks submission is
+             what makes the Terms enforceable; a footer link alone generally
+             is not. Shown only when signing up. -->
+        <label class="auth-consent hidden" id="authConsentRow">
+          <input type="checkbox" id="authConsent" />
+          <span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+        </label>
         <button type="submit" id="authSubmit">Sign In</button>
       </form>
       <p class="auth-switch">
         <span id="authSwitchText">Don't have an account?</span>
         <a id="authSwitchBtn" onclick="toggleAuthMode()">Sign Up</a>
+      </p>
+      <p class="auth-legal">
+        <a href="privacy.html">Privacy</a>
+        <span>&middot;</span>
+        <a href="terms.html">Terms</a>
+        <span>&middot;</span>
+        <a href="terms.html#refunds">Refunds</a>
       </p>
     </div>
   </div>
@@ -539,6 +643,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           Billing
         </a>
+        <a href="#" class="sidebar-link" onclick="switchTab('privacy'); return false;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Privacy
+        </a>
       </nav>
 
       <div class="sidebar-promo" id="sidebarPromo">
@@ -551,6 +659,13 @@
         </div>
         <a href="#" class="btn btn-primary" onclick="checkout('pro_yearly', event); return false;" style="width:100%;justify-content:center;font-size:13px;padding:9px 16px;">Claim Offer</a>
       </div>
+
+      <div class="sidebar-legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="terms.html#refunds">Refunds</a>
+        <a href="mailto:support@opsis.ai">Support</a>
+      </div>
     </aside>
 
     <!-- Main Content -->
@@ -561,6 +676,7 @@
         <button class="dash-tab active" data-tab="profile">Your Account</button>
         <button class="dash-tab" data-tab="pricing">Pricing</button>
         <button class="dash-tab" data-tab="billing">Billing</button>
+        <button class="dash-tab" data-tab="privacy">Privacy &amp; Data</button>
       </div>
 
       <!-- Profile Tab -->
@@ -740,6 +856,53 @@
         </div>
       </div>
 
+      <!-- Privacy & Data Tab -->
+      <div class="tab-content" id="tab-privacy">
+        <div style="margin-bottom:28px;">
+          <h2 style="font-size:22px;font-weight:700;margin-bottom:6px;">Privacy &amp; Data</h2>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.6;max-width:600px;">
+            Your screen captures are never stored &mdash; they are sent to the AI provider to
+            produce an answer and then discarded. What we do keep is listed below, and you can
+            take it with you or erase it at any time.
+          </p>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-title">What Opsis stores about you</div>
+          <ul class="data-list">
+            <li>Your email address and a securely hashed password</li>
+            <li>Your plan and credit balance</li>
+            <li>A ledger of credit grants and uses</li>
+            <li>Technical metadata per request: model, token counts, cost, timing</li>
+          </ul>
+          <ul class="data-list negative">
+            <li>No screen captures</li>
+            <li>No questions or answers</li>
+            <li>No card details &mdash; Stripe handles payment directly</li>
+          </ul>
+          <p class="data-card-foot">
+            Full detail in the <a href="privacy.html">Privacy Policy</a>.
+          </p>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-title">Export your data</div>
+          <p class="data-card-desc">Download everything Opsis holds about you as a JSON file.</p>
+          <button class="btn btn-secondary" id="exportBtn" onclick="exportData()">Download my data</button>
+        </div>
+
+        <div class="data-card danger">
+          <div class="data-card-title">Delete your account</div>
+          <p class="data-card-desc">
+            Permanently deletes your account, credits, ledger and usage history, and cancels any
+            active subscription. <strong>This cannot be undone</strong>, and remaining credits are
+            not refunded. Payment records held by Stripe are retained only as long as tax law
+            requires.
+          </p>
+          <button class="cancel-sub-btn" id="deleteAcctBtn" onclick="deleteAccount()">Delete my account</button>
+        </div>
+      </div>
+
     </main>
   </div>
 
@@ -780,6 +943,13 @@
         authMode === 'signup' ? 'Sign In' : 'Sign Up';
       document.getElementById('authPassword').autocomplete =
         authMode === 'signup' ? 'new-password' : 'current-password';
+      // Consent and the password rule are only relevant when creating an
+      // account — an existing user has already agreed, and their password
+      // predates the rule.
+      const signingUp = authMode === 'signup';
+      document.getElementById('authConsentRow').classList.toggle('hidden', !signingUp);
+      document.getElementById('authPwHint').style.display = signingUp ? 'block' : 'none';
+      document.getElementById('authConsent').checked = false;
       document.getElementById('authError').style.display = 'none';
     }
 
@@ -790,6 +960,19 @@
       const submit = document.getElementById('authSubmit');
       const error = document.getElementById('authError');
       if (!email || !password) return;
+
+      if (authMode === 'signup') {
+        if (!document.getElementById('authConsent').checked) {
+          error.textContent = 'Please accept the Terms of Service and Privacy Policy to continue.';
+          error.style.display = 'block';
+          return;
+        }
+        if (password.length < 8) {
+          error.textContent = 'Password must be at least 8 characters.';
+          error.style.display = 'block';
+          return;
+        }
+      }
 
       submit.disabled = true;
       submit.textContent = authMode === 'signup' ? 'Creating account...' : 'Signing in...';
@@ -912,13 +1095,104 @@
 
       // Update sidebar active state
       document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-      const titles = { profile: 'Profile', pricing: 'Pricing', billing: 'Billing' };
+      const titles = {
+        profile: 'Profile', pricing: 'Pricing',
+        billing: 'Billing', privacy: 'Privacy & Data',
+      };
       document.getElementById('dashPageTitle').textContent = titles[tabName] || 'Profile';
 
       // Highlight matching sidebar link
       document.querySelectorAll('.sidebar-link').forEach(l => {
         if (l.textContent.trim().toLowerCase() === tabName) l.classList.add('active');
       });
+    }
+
+    // ── Privacy & data (GDPR / CCPA self-service) ────────────────
+    async function exportData() {
+      const btn = document.getElementById('exportBtn');
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Preparing…';
+      try {
+        const { data: { session } } = await sbClient.auth.getSession();
+        if (!session) throw new Error('Your session expired. Please sign in again.');
+
+        const r = await fetch(`${API_BASE}/api/account/export`, {
+          headers: { Authorization: `Bearer ${session.access_token}` },
+        });
+        if (!r.ok) {
+          const e = await r.json().catch(() => ({}));
+          throw new Error(e.detail || 'Export failed. Please try again.');
+        }
+        const data = await r.json();
+
+        const url = URL.createObjectURL(
+          new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+        );
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `opsis-data-${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        // Revoke on the next tick; revoking synchronously can cancel the
+        // download in some browsers before it starts.
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        btn.textContent = 'Downloaded';
+        setTimeout(() => { btn.textContent = original; }, 2500);
+      } catch (err) {
+        alert(err.message || 'Export failed.');
+        btn.textContent = original;
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    async function deleteAccount() {
+      // Two barriers, because this is irreversible: an explicit warning, then
+      // a typed confirmation that a mis-click cannot satisfy.
+      if (!confirm(
+        'Delete your Opsis account permanently?\n\n' +
+        '• Your account, credits and usage history are erased\n' +
+        '• Any active subscription is cancelled\n' +
+        '• Remaining credits are not refunded\n\n' +
+        'This cannot be undone.'
+      )) return;
+
+      const typed = prompt('Type DELETE to confirm.');
+      if (typed === null) return;
+      if (typed.trim().toUpperCase() !== 'DELETE') {
+        alert('Account not deleted — confirmation did not match.');
+        return;
+      }
+
+      const btn = document.getElementById('deleteAcctBtn');
+      btn.disabled = true;
+      btn.textContent = 'Deleting…';
+      try {
+        const { data: { session } } = await sbClient.auth.getSession();
+        if (!session) throw new Error('Your session expired. Please sign in again.');
+
+        const r = await fetch(`${API_BASE}/api/account/delete`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({ confirm: 'DELETE' }),
+        });
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(data.detail || 'Deletion failed. Please contact support.');
+
+        alert(data.detail || 'Your account has been deleted.');
+        await sbClient.auth.signOut();
+        window.location.href = 'index.html';
+      } catch (err) {
+        alert(err.message || 'Deletion failed.');
+        btn.disabled = false;
+        btn.textContent = 'Delete my account';
+      }
     }
 
     // ── Actions ──────────────────────────────────────────────────
